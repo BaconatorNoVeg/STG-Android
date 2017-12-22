@@ -1,0 +1,78 @@
+Name,Physical,Magical
+Ancile,TRUE,FALSE
+Asi,TRUE,FALSE
+Atalanta's Bow,TRUE,FALSE
+Bancroft's Talon,FALSE,TRUE
+Blackthorn Hammer,TRUE,FALSE
+Book of the Dead,FALSE,TRUE
+Book of Thoth,FALSE,TRUE
+Brawler's Beat Stick,TRUE,FALSE
+Breastplate of Valor,TRUE,TRUE
+Bulwark of Hope,TRUE,TRUE
+Celestial Legion Helm,FALSE,TRUE
+Deathbringer,TRUE,FALSE
+Demonic Grip,FALSE,TRUE
+Devourer's Gauntlet,TRUE,FALSE
+Doom Orb,FALSE,TRUE
+Dynasty Plate Helm,FALSE,TRUE
+Emperor's Armor,TRUE,TRUE
+Ethereal Staff,FALSE,TRUE
+Frostbound Hammer,TRUE,FALSE
+Gauntlet of Thebes,TRUE,TRUE
+Gem of Isolation,FALSE,TRUE
+Genji's Guard,TRUE,TRUE
+Gladiator's Shield,TRUE,FALSE
+Hastened Ring,FALSE,TRUE
+Heartward Amulet,TRUE,TRUE
+Hide of the Nemean Lion,TRUE,TRUE
+Hide of the Urchin,TRUE,TRUE
+Hydra's Lament,TRUE,FALSE
+Ichaival,TRUE,FALSE
+Jade Emperor's Crown,FALSE,TRUE
+Jotunn's Wrath,TRUE,FALSE
+Lotus Crown,FALSE,TRUE
+Magi's Blessing,TRUE,TRUE
+Mail of Renewal,TRUE,TRUE
+Malice,TRUE,FALSE
+Mantle of Discord,TRUE,TRUE
+Midgardian Mail,TRUE,TRUE
+Mystical Mail,TRUE,TRUE
+Obsidian Shard,FALSE,TRUE
+Odysseus' Bow,TRUE,FALSE
+Oni Hunter's Garb,TRUE,TRUE
+Pestilence,TRUE,TRUE
+Poisoned Star,TRUE,FALSE
+Polynomicon,FALSE,TRUE
+Pythagorem's Piece,FALSE,TRUE
+Quin's Sais,TRUE,FALSE
+Rage,TRUE,FALSE
+Relic Dagger,TRUE,TRUE
+Rod of Asclepius,FALSE,TRUE
+Runeforged Hammer,TRUE,FALSE
+Runic Shield,TRUE,FALSE
+Shaman's Ring,FALSE,TRUE
+Shield of Regrowth,TRUE,TRUE
+Shifter's Shield,TRUE,FALSE
+Shogun's Kusari,TRUE,TRUE
+Silverbranch Bow,TRUE,FALSE
+Soul Reaver,FALSE,TRUE
+Sovereignty,TRUE,TRUE
+Spear of Desolation,FALSE,TRUE
+Spear of the Magus,FALSE,TRUE
+Spectral Armor,TRUE,TRUE
+Spirit Robe,TRUE,TRUE
+Stone of Binding,FALSE,TRUE
+Stone of Fal,FALSE,TRUE
+Stone of Gaia,TRUE,TRUE
+Telkhines Ring,FALSE,TRUE
+The Crusher,TRUE,FALSE
+The Executioner,TRUE,FALSE
+Titan's Bane,TRUE,FALSE
+Toxic Blade,TRUE,TRUE
+Transcendence,TRUE,FALSE
+Void Shield,TRUE,FALSE
+Void Stone,FALSE,TRUE
+Warlock's Sash,FALSE,TRUE
+Wind Demon,TRUE,FALSE
+Winged Blade,TRUE,TRUE
+Witchblade,TRUE,TRUE
