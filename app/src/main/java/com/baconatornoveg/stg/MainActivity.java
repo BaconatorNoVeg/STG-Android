@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static Context context;
-    private SmiteTeamBuilder stb;
+    private static SmiteTeamBuilder stb;
 
-    public SmiteTeamBuilder getStb() {
+    public static SmiteTeamBuilder getStb() {
         return stb;
     }
     public static String player1God;
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public static String player4Build;
     public static String player5God;
     public static String player5Build;
+
+    public static int numPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                numPlayers = 1;
                 stb.generateTeam(1);
                 prepareBuildActivity();
                 startActivity(i);
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                numPlayers = 2;
                 stb.generateTeam(2);
                 prepareBuildActivity();
                 startActivity(i);
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                numPlayers = 3;
                 stb.generateTeam(3);
                 prepareBuildActivity();
                 startActivity(i);
@@ -84,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                numPlayers = 4;
                 stb.generateTeam(4);
                 prepareBuildActivity();
                 startActivity(i);
@@ -93,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                numPlayers = 5;
                 stb.generateTeam(5);
                 prepareBuildActivity();
                 startActivity(i);
