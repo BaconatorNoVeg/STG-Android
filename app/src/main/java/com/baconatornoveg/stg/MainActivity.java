@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         final Intent i = new Intent(getApplicationContext(), BuildActivity.class);
         stb = new SmiteTeamBuilder(context);
         System.out.println("Smite Team Builder: Android Edition");
-        System.out.println("Version " + stb.getVersion());
+        System.out.println("Version " + stb.getEngineVersion());
         System.out.println("Proudly coded by Joshua Luce");
         System.out.println("");
         stb.registerLists();
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void prepareBuildActivity() {
+    public static void prepareBuildActivity() {
 
         //Reset strings
         player1God = "";
