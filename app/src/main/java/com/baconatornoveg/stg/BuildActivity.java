@@ -3,24 +3,30 @@ package com.baconatornoveg.stg;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-/**
- * Created by bacon on 12/22/2017.
- */
-
 public class BuildActivity extends AppCompatActivity {
+
+    private Context context;
+    private SmiteTeamBuilder stb = MainActivity.getStb();
+    private int playerCount = MainActivity.numPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build);
-        Context context = this;
+        context = this;
+        setTextViews(context);
+    }
+
+    private void setTextViews(Context context) {
+        //Set context because Android is a real b**** about this
+        Context thisContext = context;
+
+        //Initialize TextViews
         TextView player1God = findViewById(R.id.player1God);
         TextView player1Build = findViewById(R.id.player1Build);
         TextView player1Build1 = findViewById(R.id.player1Build1);
@@ -28,7 +34,6 @@ public class BuildActivity extends AppCompatActivity {
         TextView player1Build3 = findViewById(R.id.player1Build3);
         TextView player1Build4 = findViewById(R.id.player1Build4);
         TextView player1Build5 = findViewById(R.id.player1Build5);
-
         TextView player2God = findViewById(R.id.player2God);
         TextView player2Build = findViewById(R.id.player2Build);
         TextView player2Build1 = findViewById(R.id.player2Build1);
@@ -36,7 +41,6 @@ public class BuildActivity extends AppCompatActivity {
         TextView player2Build3 = findViewById(R.id.player2Build3);
         TextView player2Build4 = findViewById(R.id.player2Build4);
         TextView player2Build5 = findViewById(R.id.player2Build5);
-
         TextView player3God = findViewById(R.id.player3God);
         TextView player3Build = findViewById(R.id.player3Build);
         TextView player3Build1 = findViewById(R.id.player3Build1);
@@ -44,7 +48,6 @@ public class BuildActivity extends AppCompatActivity {
         TextView player3Build3 = findViewById(R.id.player3Build3);
         TextView player3Build4 = findViewById(R.id.player3Build4);
         TextView player3Build5 = findViewById(R.id.player3Build5);
-
         TextView player4God = findViewById(R.id.player4God);
         TextView player4Build = findViewById(R.id.player4Build);
         TextView player4Build1 = findViewById(R.id.player4Build1);
@@ -52,7 +55,6 @@ public class BuildActivity extends AppCompatActivity {
         TextView player4Build3 = findViewById(R.id.player4Build3);
         TextView player4Build4 = findViewById(R.id.player4Build4);
         TextView player4Build5 = findViewById(R.id.player4Build5);
-
         TextView player5God = findViewById(R.id.player5God);
         TextView player5Build = findViewById(R.id.player5Build);
         TextView player5Build1 = findViewById(R.id.player5Build1);
@@ -61,6 +63,7 @@ public class BuildActivity extends AppCompatActivity {
         TextView player5Build4 = findViewById(R.id.player5Build4);
         TextView player5Build5 = findViewById(R.id.player5Build5);
 
+        //Set the text in the TextViews (Need to find a more efficient way to do this)
         player1God.setText(MainActivity.player1God);
         player1Build.setText(processBuild(MainActivity.player1Build)[0]);
         player1Build1.setText(processBuild(MainActivity.player1Build)[1]);
@@ -101,10 +104,33 @@ public class BuildActivity extends AppCompatActivity {
     private String[] processBuild(String buildArray) {
         String[] processedBuild = new String[6];
         if (!buildArray.equals("")) {
-            String buildArrayTrimmed = buildArray.substring(1, buildArray.length()-1);
+            String buildArrayTrimmed = buildArray.substring(1, buildArray.length() - 1);
             processedBuild = buildArrayTrimmed.split(",");
         }
         return processedBuild;
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_build, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_reroll:
+                stb.generateTeam(playerCount);
+                MainActivity.prepareBuildActivity();
+                setTextViews(context);
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 }
