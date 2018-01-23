@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
+
 public class BuildActivity extends AppCompatActivity {
 
     private Context context;

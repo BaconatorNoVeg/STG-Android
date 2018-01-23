@@ -1,4 +1,4 @@
-package com.baconatornoveg.stg;
+package com.baconatornoveg.stg.engine;
 
 public class Hunter extends God {
 

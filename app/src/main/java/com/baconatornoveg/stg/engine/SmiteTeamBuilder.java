@@ -1,13 +1,11 @@
-package com.baconatornoveg.stg;
+package com.baconatornoveg.stg.engine;
 
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.support.annotation.RawRes;
+
+import com.baconatornoveg.stg.R;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Random;
