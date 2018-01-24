@@ -4,7 +4,7 @@ to play? Do you want to have a lot more fun when playing in parties? If you answ
 the app for you!
 
 ## Features
-- Generates a random team between 1 and 5 players
+- Generates a random team of 1 to 5 players
 - Generates a random build for each teammate
 - More features coming soon
 
