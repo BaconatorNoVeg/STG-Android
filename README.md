@@ -3,9 +3,16 @@ Do you play Smite? Do you get bored playing the same god over and over again? Do
 to play? Do you want to have a lot more fun when playing in parties? If you answered 'yes' to any of these questions, this is
 the app for you!
 
+Smite Team Generator is written completely in Java for the Android platform. It is an application that generates a team of random gods, each with random item builds, for the Hi-Rez Studios MOBA, Smite. Currently, there is no plans for an iOS release of the app, but that may change in the future.
+
 ## Features
 - Generates a random team of 1 to 5 players
 - Generates a random build for each teammate
 - More features coming soon
 
-Want to try it out? Here's the Google Play alpha link: https://play.google.com/apps/testing/com.baconatornoveg.stg
+Google Play Alpha Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
+
+## Using the Source Files
+Just import the build.gradle file from your downloaded source code into Android Studio, and you'll be good to go from there.
+
+If you have any questions, or you would like to contribute to this project somehow, please do not hesitate to use the issue tracker or contact me on Discord: **Baconator_NoVeg#8550**.
