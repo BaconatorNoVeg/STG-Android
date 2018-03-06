@@ -6,8 +6,8 @@ android {
         applicationId "com.baconatornoveg.stg"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 7
-        versionName "0.1.4"
+        versionCode 8
+        versionName "0.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
