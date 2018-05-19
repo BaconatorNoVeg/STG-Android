@@ -13,6 +13,7 @@ Smite Team Generator is written completely in Java for the Android platform. It 
 - More features coming soon
 
 Google Play Testing Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
+
 Google Play Store Link: https://play.google.com/store/apps/details?id=com.baconatornoveg.stg
 
 ## Using the Source Files
