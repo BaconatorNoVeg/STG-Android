@@ -1,5 +1,5 @@
 # Smite Team Generator
-![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Version-0.1.5-yellow.svg)
+![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Version-0.1.6-green.svg)
 
 Do you play Smite? Do you get bored playing the same god over and over again? Do you ever find it difficult to choose a new god
 to play? Do you want to have a lot more fun when playing in parties? If you answered 'yes' to any of these questions, this is
@@ -12,7 +12,8 @@ Smite Team Generator is written completely in Java for the Android platform. It 
 - Generates a random build for each teammate
 - More features coming soon
 
-Google Play Alpha Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
+Google Play Testing Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
+Google Play Store Link: https://play.google.com/store/apps/details?id=com.baconatornoveg.stg
 
 ## Using the Source Files
 Just import the build.gradle file from your downloaded source code into Android Studio, and you'll be good to go from there.
