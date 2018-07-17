@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="KEY_FORCE_OFFENSIVE"
+        android:summary="Forces attack builds on offensive gods\n(Does not apply to boots)"
+        android:title="Force offensive builds" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="KEY_FORCE_DEFENSIVE"
+        android:summary="Forces tank builds on defensive gods\n(Does not apply to boots)"
+        android:title="Force defensive builds" />
+</PreferenceScreen>

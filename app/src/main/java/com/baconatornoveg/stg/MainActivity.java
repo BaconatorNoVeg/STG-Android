@@ -2,9 +2,11 @@ package com.baconatornoveg.stg;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static String player5Build;
 
     public static int numPlayers;
+    public Intent buildIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Button fourPlayerButton = findViewById(R.id.fourPlayer);
         Button fivePlayerButton = findViewById(R.id.fivePlayer);
         context = this;
-        final Intent i = new Intent(getApplicationContext(), BuildActivity.class);
+        buildIntent = new Intent(getApplicationContext(), BuildActivity.class);
         stb = new SmiteTeamBuilder(context);
         System.out.println("Smite Team Builder: Android Edition");
         System.out.println("Version " + stb.getEngineVersion());
@@ -56,9 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numPlayers = 1;
-                stb.generateTeam(1);
-                prepareBuildActivity();
-                startActivity(i);
+                runGenerator(1);
             }
 
         });
@@ -67,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numPlayers = 2;
-                stb.generateTeam(2);
-                prepareBuildActivity();
-                startActivity(i);
+                runGenerator(2);
             }
         });
         threePlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numPlayers = 3;
-                stb.generateTeam(3);
-                prepareBuildActivity();
-                startActivity(i);
+                runGenerator(3);
             }
         });
         fourPlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -87,9 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numPlayers = 4;
-                stb.generateTeam(4);
-                prepareBuildActivity();
-                startActivity(i);
+                runGenerator(4);
             }
         });
         fivePlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numPlayers = 5;
-                stb.generateTeam(5);
-                prepareBuildActivity();
-                startActivity(i);
+                runGenerator(5);
             }
         });
     }
@@ -124,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         player4Build = "";
         player5God = "";
         player5Build = "";
+
 
         //Set strings
         player1God = stb.player1Loadout.get(0);
@@ -160,12 +154,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void runGenerator(int teamSize) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
+        boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
+        stb.generateTeam(teamSize, forcingOffensive, forcingDefensive);
+        prepareBuildActivity();
+        startActivity(buildIntent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_donate:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://paypal.me/joshualuce"));
                 startActivity(browserIntent);
+                return true;
+
+            case R.id.action_options:
+                Intent optionsIntent = new Intent(getApplicationContext(), OptionsActivity.class);
+                startActivity(optionsIntent);
                 return true;
 
             default:

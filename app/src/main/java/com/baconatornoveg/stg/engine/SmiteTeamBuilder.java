@@ -33,13 +33,15 @@ public class SmiteTeamBuilder {
     private ArrayList<Item> build = new ArrayList<>();
     private Random rand = new Random();
     private String[] typeRoll = {"Mage", "Guardian", "Warrior", "Assassin", "Hunter"};
+    private boolean isForcingOffensive = false;
+    private boolean isForcingDefensive = false;
 
     public SmiteTeamBuilder(Context context) {
         this.context = context;
     }
 
     public String getEngineVersion() {
-        return "1.0.0";
+        return "1.1.0";
     }
 
     public void registerLists() {
@@ -127,7 +129,9 @@ public class SmiteTeamBuilder {
         }
     }
 
-    public void generateTeam(int size) {
+    public void generateTeam(int size, boolean forceOffensive, boolean forceDefensive) {
+        isForcingOffensive = forceOffensive;
+        isForcingDefensive = forceDefensive;
         try {
             resetLoadouts();
         } catch (NullPointerException e) {
@@ -236,17 +240,19 @@ public class SmiteTeamBuilder {
             case "Mage":
                 player = MAGES.get(rand.nextInt(MAGES.size() - 1)).toString();
                 build = generateBuild("magical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isPhysical) {
-                            offensiveCount++;
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (!i.isPhysical) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("magical");
-                    } else {
-                        break;
+                        if (offensiveCount < 4) {
+                            build = generateBuild("magical");
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -254,23 +260,41 @@ public class SmiteTeamBuilder {
 
             case "Guardian":
                 player = GUARDIANS.get(rand.nextInt(GUARDIANS.size() - 1)).toString();
-                playerBuild = generateBuild("magical").toString();
+                build = generateBuild("magical");
+                if (isForcingDefensive) {
+                    while (true) {
+                        int defensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isPhysical) {
+                                defensiveCount++;
+                            }
+                        }
+                        if (defensiveCount < 4) {
+                            build = generateBuild("magical");
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                playerBuild = build.toString();
                 break;
 
             case "Warrior":
                 player = WARRIORS.get(rand.nextInt(WARRIORS.size() - 1)).toString();
                 build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (!i.isMagical) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 3) {
+                            build = generateBuild("physical");
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -279,17 +303,19 @@ public class SmiteTeamBuilder {
             case "Assassin":
                 player = ASSASSINS.get(rand.nextInt(ASSASSINS.size() - 1)).toString();
                 build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (!i.isMagical) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 4) {
+                            build = generateBuild("physical");
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -298,17 +324,19 @@ public class SmiteTeamBuilder {
             case "Hunter":
                 player = HUNTERS.get(rand.nextInt(HUNTERS.size() - 1)).toString();
                 build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (!i.isMagical) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 4) {
+                            build = generateBuild("physical");
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();

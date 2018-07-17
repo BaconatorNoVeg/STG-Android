@@ -1,7 +1,9 @@
 package com.baconatornoveg.stg;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -122,7 +124,8 @@ public class BuildActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_reroll:
-                stb.generateTeam(playerCount);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false));
                 MainActivity.prepareBuildActivity();
                 setTextViews(context);
                 return true;

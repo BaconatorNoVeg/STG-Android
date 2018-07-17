@@ -8,4 +8,10 @@
         android:title="@string/donate"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_options"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings"
+        app:showAsAction="always"/>
+
 </menu>
