@@ -1,81 +1,81 @@
-Name,Physical,Magical
-Ancile,TRUE,FALSE
-Asi,TRUE,FALSE
-Atalanta's Bow,TRUE,FALSE
-Bancroft's Talon,FALSE,TRUE
-Blackthorn Hammer,TRUE,FALSE
-Book of the Dead,FALSE,TRUE
-Book of Thoth,FALSE,TRUE
-Brawler's Beat Stick,TRUE,FALSE
-Breastplate of Valor,TRUE,TRUE
-Bulwark of Hope,TRUE,TRUE
-Celestial Legion Helm,FALSE,TRUE
-Deathbringer,TRUE,FALSE
-Demonic Grip,FALSE,TRUE
-Devourer's Gauntlet,TRUE,FALSE
-Doom Orb,FALSE,TRUE
-Dynasty Plate Helm,FALSE,TRUE
-Emperor's Armor,TRUE,TRUE
-Ethereal Staff,FALSE,TRUE
-Frostbound Hammer,TRUE,FALSE
-Gauntlet of Thebes,TRUE,TRUE
-Gem of Isolation,FALSE,TRUE
-Genji's Guard,TRUE,TRUE
-Gladiator's Shield,TRUE,FALSE
-Hastened Ring,FALSE,TRUE
-Heartward Amulet,TRUE,TRUE
-Hide of the Nemean Lion,TRUE,TRUE
-Hide of the Urchin,TRUE,TRUE
-Hydra's Lament,TRUE,FALSE
-Ichaival,TRUE,FALSE
-Jade Emperor's Crown,FALSE,TRUE
-Jotunn's Wrath,TRUE,FALSE
-Lotus Crown,FALSE,TRUE
-Magi's Cloak,TRUE,TRUE
-Mail of Renewal,TRUE,TRUE
-Malice,TRUE,FALSE
-Mantle of Discord,TRUE,TRUE
-Midgardian Mail,TRUE,TRUE
-Mystical Mail,TRUE,TRUE
-Obsidian Shard,FALSE,TRUE
-Odysseus' Bow,TRUE,FALSE
-Oni Hunter's Garb,TRUE,TRUE
-Pestilence,TRUE,TRUE
-Poisoned Star,TRUE,FALSE
-Polynomicon,FALSE,TRUE
-Pythagorem's Piece,FALSE,TRUE
-Quin's Sais,TRUE,FALSE
-Rage,TRUE,FALSE
-Relic Dagger,TRUE,TRUE
-Rod of Asclepius,FALSE,TRUE
-Runeforged Hammer,TRUE,FALSE
-Runic Shield,TRUE,FALSE
-Shaman's Ring,FALSE,TRUE
-Shield of Regrowth,TRUE,TRUE
-Shifter's Shield,TRUE,FALSE
-Shogun's Kusari,TRUE,TRUE
-Silverbranch Bow,TRUE,FALSE
-Soul Gem,FALSE,TRUE
-Soul Reaver,FALSE,TRUE
-Sovereignty,TRUE,TRUE
-Spear of Desolation,FALSE,TRUE
-Spear of the Magus,FALSE,TRUE
-Spectral Armor,TRUE,TRUE
-Spirit Robe,TRUE,TRUE
-Stone of Binding,FALSE,TRUE
-Stone of Fal,FALSE,TRUE
-Stone of Gaia,TRUE,TRUE
-Talisman of Energy,TRUE,TRUE
-Telkhines Ring,FALSE,TRUE
-The Crusher,TRUE,FALSE
-The Executioner,TRUE,FALSE
-Titan's Bane,TRUE,FALSE
-Toxic Blade,TRUE,TRUE
-Transcendence,TRUE,FALSE
-Typhon's Fang,FALSE,TRUE
-Void Shield,TRUE,FALSE
-Void Stone,FALSE,TRUE
-Warlock's Staff,FALSE,TRUE
-Wind Demon,TRUE,FALSE
-Winged Blade,TRUE,TRUE
-Witchblade,TRUE,TRUE
+Name,Physical,Magical,ItemType
+Ancile,TRUE,FALSE,DEFENSE
+Asi,TRUE,FALSE,OFFENSE
+Atalanta's Bow,TRUE,FALSE,OFFENSE
+Bancroft's Talon,FALSE,TRUE,OFFENSE
+Blackthorn Hammer,TRUE,FALSE,OFFENSE
+Book of the Dead,FALSE,TRUE,OFFENSE
+Book of Thoth,FALSE,TRUE,OFFENSE
+Brawler's Beat Stick,TRUE,FALSE,OFFENSE
+Breastplate of Valor,TRUE,TRUE,DEFENSE
+Bulwark of Hope,TRUE,TRUE,DEFENSE
+Celestial Legion Helm,FALSE,TRUE,DEFENSE
+Deathbringer,TRUE,FALSE,OFFENSE
+Demonic Grip,FALSE,TRUE,OFFENSE
+Devourer's Gauntlet,TRUE,FALSE,OFFENSE
+Doom Orb,FALSE,TRUE,OFFENSE
+Dynasty Plate Helm,FALSE,TRUE,DEFENSE
+Emperor's Armor,TRUE,TRUE,DEFENSE
+Ethereal Staff,FALSE,TRUE,OFFENSE
+Frostbound Hammer,TRUE,FALSE,OFFENSE
+Gauntlet of Thebes,TRUE,TRUE,DEFENSE
+Gem of Isolation,FALSE,TRUE,OFFENSE
+Genji's Guard,TRUE,TRUE,DEFENSE
+Gladiator's Shield,TRUE,FALSE,DEFENSE
+Hastened Ring,FALSE,TRUE,OFFENSE
+Heartward Amulet,TRUE,TRUE,DEFENSE
+Hide of the Nemean Lion,TRUE,TRUE,DEFENSE
+Hide of the Urchin,TRUE,TRUE,DEFENSE
+Hydra's Lament,TRUE,FALSE,OFFENSE
+Ichaival,TRUE,FALSE,OFFENSE
+Jade Emperor's Crown,FALSE,TRUE,DEFENSE
+Jotunn's Wrath,TRUE,FALSE,OFFENSE
+Lotus Crown,FALSE,TRUE,DEFENSE
+Magi's Cloak,TRUE,TRUE,DEFENSE
+Mail of Renewal,TRUE,TRUE,DEFENSE
+Malice,TRUE,FALSE,OFFENSE
+Mantle of Discord,TRUE,TRUE,DEFENSE
+Midgardian Mail,TRUE,TRUE,DEFENSE
+Mystical Mail,TRUE,TRUE,DEFENSE
+Obsidian Shard,FALSE,TRUE,OFFENSE
+Odysseus' Bow,TRUE,FALSE,OFFENSE
+Oni Hunter's Garb,TRUE,TRUE,DEFENSE
+Pestilence,TRUE,TRUE,OFFENSE
+Poisoned Star,TRUE,FALSE,OFFENSE
+Polynomicon,FALSE,TRUE,OFFENSE
+Pythagorem's Piece,FALSE,TRUE,OFFENSE
+Quin's Sais,TRUE,FALSE,OFFENSE
+Rage,TRUE,FALSE,OFFENSE
+Relic Dagger,TRUE,TRUE,DEFENSE
+Rod of Asclepius,FALSE,TRUE,OFFENSE
+Runeforged Hammer,TRUE,FALSE,OFFENSE
+Runic Shield,TRUE,FALSE,DEFENSE
+Shaman's Ring,FALSE,TRUE,OFFENSE
+Shield of Regrowth,TRUE,TRUE,DEFENSE
+Shifter's Shield,TRUE,FALSE,DEFENSE
+Shogun's Kusari,TRUE,TRUE,DEFENSE
+Silverbranch Bow,TRUE,FALSE,OFFENSE
+Soul Gem,FALSE,TRUE,OFFENSE
+Soul Reaver,FALSE,TRUE,OFFENSE
+Sovereignty,TRUE,TRUE,DEFENSE
+Spear of Desolation,FALSE,TRUE,OFFENSE
+Spear of the Magus,FALSE,TRUE,OFFENSE
+Spectral Armor,TRUE,TRUE,DEFENSE
+Spirit Robe,TRUE,TRUE,DEFENSE
+Stone of Binding,FALSE,TRUE,DEFENSE
+Stone of Fal,FALSE,TRUE,DEFENSE
+Stone of Gaia,TRUE,TRUE,DEFENSE
+Talisman of Energy,TRUE,TRUE,DEFENSE
+Telkhines Ring,FALSE,TRUE,OFFENSE
+The Crusher,TRUE,FALSE,OFFENSE
+The Executioner,TRUE,FALSE,OFFENSE
+Titan's Bane,TRUE,FALSE,OFFENSE
+Toxic Blade,TRUE,TRUE,OFFENSE
+Transcendence,TRUE,FALSE,OFFENSE
+Typhon's Fang,FALSE,TRUE,OFFENSE
+Void Shield,TRUE,FALSE,DEFENSE
+Void Stone,FALSE,TRUE,DEFENSE
+Warlock's Staff,FALSE,TRUE,OFFENSE
+Wind Demon,TRUE,FALSE,OFFENSE
+Winged Blade,TRUE,TRUE,DEFENSE
+Witchblade,TRUE,TRUE,DEFENSE
