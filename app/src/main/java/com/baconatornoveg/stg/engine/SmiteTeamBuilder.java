@@ -120,11 +120,11 @@ public class SmiteTeamBuilder {
             String[] values = line.split(",");
 
             if (values[1].toUpperCase().equals("TRUE") && (values[2].toUpperCase().equals("FALSE"))) {
-                ITEMS.add(new Item(true, false, values[0]));
+                ITEMS.add(new Item(true, false, values[3], values[0]));
             } else if (values[1].toUpperCase().equals("FALSE") && (values[2].toUpperCase().equals("TRUE"))) {
-                ITEMS.add(new Item(false, true, values[0]));
+                ITEMS.add(new Item(false, true, values[3], values[0]));
             } else {
-                ITEMS.add(new Item(true, true, values[0]));
+                ITEMS.add(new Item(true, true, values[3], values[0]));
             }
         }
     }
@@ -244,11 +244,11 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isPhysical) {
+                            if (i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
-                        if (offensiveCount < 4) {
+                        if (offensiveCount < 5) {
                             build = generateBuild("magical");
                         } else {
                             break;
@@ -265,11 +265,11 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int defensiveCount = 0;
                         for (Item i : build) {
-                            if (i.isPhysical) {
+                            if (i.isDefensive()) {
                                 defensiveCount++;
                             }
                         }
-                        if (defensiveCount < 4) {
+                        if (defensiveCount < 5) {
                             build = generateBuild("magical");
                         } else {
                             break;
@@ -286,7 +286,7 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isMagical) {
+                            if (!i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
@@ -307,11 +307,11 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isMagical) {
+                            if (!i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
-                        if (offensiveCount < 4) {
+                        if (offensiveCount < 5) {
                             build = generateBuild("physical");
                         } else {
                             break;
@@ -328,11 +328,11 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isMagical) {
+                            if (!i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
-                        if (offensiveCount < 4) {
+                        if (offensiveCount < 5) {
                             build = generateBuild("physical");
                         } else {
                             break;
@@ -389,7 +389,7 @@ public class SmiteTeamBuilder {
     private Item getPhysicalBoot() {
         Item boot;
         boot = BOOTS.get((rand.nextInt(BOOTS.size())));
-        while (!boot.isPhysical) {
+        while (boot.isMagical()) {
             boot = BOOTS.get((rand.nextInt(BOOTS.size())));
         }
         return boot;
@@ -398,7 +398,7 @@ public class SmiteTeamBuilder {
     private Item getMagicalBoot() {
         Item boot;
         boot = BOOTS.get((rand.nextInt(BOOTS.size())));
-        while (!boot.isMagical) {
+        while (boot.isPhysical()) {
             boot = BOOTS.get((rand.nextInt(BOOTS.size())));
         }
         return boot;
@@ -406,7 +406,7 @@ public class SmiteTeamBuilder {
 
     private Item getPhysicalItem() {
         Item item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
-        while (!item.isPhysical) {
+        while (item.isMagical()) {
             item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
         }
         return item;
@@ -414,7 +414,7 @@ public class SmiteTeamBuilder {
 
     private Item getMagicalItem() {
         Item item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
-        while (!item.isMagical) {
+        while (item.isPhysical()) {
             item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
         }
         return item;

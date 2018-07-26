@@ -29,6 +29,10 @@ public class Item {
         return isMagical;
     }
 
+    public boolean isOffensive() { return itemType != null && itemType.equals("OFFENSE"); }
+
+    public boolean isDefensive() { return itemType != null && itemType.equals("DEFENSE"); }
+
     public String toString() {
         return this.name;
     }
