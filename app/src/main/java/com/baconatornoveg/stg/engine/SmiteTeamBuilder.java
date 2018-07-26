@@ -286,7 +286,7 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isOffensive()) {
+                            if (i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
@@ -307,7 +307,7 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isOffensive()) {
+                            if (i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
@@ -328,7 +328,7 @@ public class SmiteTeamBuilder {
                     while (true) {
                         int offensiveCount = 0;
                         for (Item i : build) {
-                            if (!i.isOffensive()) {
+                            if (i.isOffensive()) {
                                 offensiveCount++;
                             }
                         }
