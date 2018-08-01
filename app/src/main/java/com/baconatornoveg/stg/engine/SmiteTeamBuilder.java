@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.baconatornoveg.stg.R;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Random;
@@ -27,10 +26,6 @@ public class SmiteTeamBuilder {
     public ArrayList<String> player4Loadout;
     public ArrayList<String> player5Loadout;
     private Context context;
-    private File bootsCSV;
-    private File godsCSV;
-    private File itemsCSV;
-    private ArrayList<Item> build = new ArrayList<>();
     private Random rand = new Random();
     private String[] typeRoll = {"Mage", "Guardian", "Warrior", "Assassin", "Hunter"};
     private boolean isForcingOffensive = false;
@@ -38,17 +33,14 @@ public class SmiteTeamBuilder {
 
     public SmiteTeamBuilder(Context context) {
         this.context = context;
+        registerLists();
     }
 
     public String getEngineVersion() {
         return "1.1.0";
     }
 
-    public void registerLists() {
-
-        bootsCSV = new File("raw/boots.csv");
-        godsCSV = new File("raw/gods.csv");
-        itemsCSV = new File("raw/items.csv");
+    private void registerLists() {
 
         Scanner in;
 
@@ -127,6 +119,7 @@ public class SmiteTeamBuilder {
                 ITEMS.add(new Item(true, true, values[3], values[0]));
             }
         }
+        in.close();
     }
 
     public void generateTeam(int size, boolean forceOffensive, boolean forceDefensive) {
@@ -234,6 +227,7 @@ public class SmiteTeamBuilder {
     private ArrayList<String> makePlayerLoadout(String position) {
         String player = null;
         String playerBuild = null;
+        ArrayList<Item> build;
 
         switch (position) {
 
@@ -352,11 +346,11 @@ public class SmiteTeamBuilder {
 
     }
 
-    public ArrayList<Item> generateBuild(String type) {
+    private ArrayList<Item> generateBuild(String type) {
         ArrayList<Item> build = new ArrayList<>();
         LinkedHashSet<Item> generation = new LinkedHashSet<>();
         Boolean matches;
-        Item newItem = null;
+        Item newItem;
         if (type.equals("physical")) {
             generation.add(getPhysicalBoot());
             for (int i = 0; i < 5; i++) {

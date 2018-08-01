@@ -17,12 +17,8 @@ import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Context context;
-    private static SmiteTeamBuilder stb;
-
-    public static SmiteTeamBuilder getStb() {
-        return stb;
-    }
+    public Context context;
+    private SmiteTeamBuilder stb;
     public static String player1God;
     public static String player1Build;
     public static String player2God;
@@ -53,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Version " + stb.getEngineVersion());
         System.out.println("Proudly coded by Joshua Luce");
         System.out.println("");
-        stb.registerLists();
         onePlayerButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -104,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public static void prepareBuildActivity() {
+    public static void prepareBuildActivity(SmiteTeamBuilder stb) {
 
         //Reset strings
         player1God = "";
@@ -159,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
         boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
         stb.generateTeam(teamSize, forcingOffensive, forcingDefensive);
-        prepareBuildActivity();
+        prepareBuildActivity(stb);
         startActivity(buildIntent);
     }
 

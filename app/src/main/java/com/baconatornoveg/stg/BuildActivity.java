@@ -14,21 +14,19 @@ import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
 
 public class BuildActivity extends AppCompatActivity {
 
-    private Context context;
-    private SmiteTeamBuilder stb = MainActivity.getStb();
+    private SmiteTeamBuilder stb;
     private int playerCount = MainActivity.numPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build);
-        context = this;
-        setTextViews(context);
+        Context context = this;
+        stb = new SmiteTeamBuilder(context);
+        setTextViews();
     }
 
-    private void setTextViews(Context context) {
-        //Set context because Android is a real b**** about this
-        Context thisContext = context;
+    private void setTextViews() {
 
         //Initialize TextViews
         TextView player1God = findViewById(R.id.player1God);
@@ -126,8 +124,8 @@ public class BuildActivity extends AppCompatActivity {
             case R.id.action_reroll:
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false));
-                MainActivity.prepareBuildActivity();
-                setTextViews(context);
+                MainActivity.prepareBuildActivity(stb);
+                setTextViews();
                 return true;
 
             default:
