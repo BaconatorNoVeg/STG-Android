@@ -153,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
         boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
-        stb.generateTeam(teamSize, forcingOffensive, forcingDefensive);
+        boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
+        stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced);
         prepareBuildActivity(stb);
         startActivity(buildIntent);
     }

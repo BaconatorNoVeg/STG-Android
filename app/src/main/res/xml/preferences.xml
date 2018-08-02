@@ -10,4 +10,9 @@
         android:key="KEY_FORCE_DEFENSIVE"
         android:summary="Forces tank builds on defensive gods\n(Does not apply to boots)"
         android:title="Force defensive builds" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="KEY_FORCE_BALANCED"
+        android:summary="Forces each team member to have a different type god"
+        android:title="Force balanced team" />
 </PreferenceScreen>

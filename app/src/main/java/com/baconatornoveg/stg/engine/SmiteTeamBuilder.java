@@ -30,6 +30,7 @@ public class SmiteTeamBuilder {
     private String[] typeRoll = {"Mage", "Guardian", "Warrior", "Assassin", "Hunter"};
     private boolean isForcingOffensive = false;
     private boolean isForcingDefensive = false;
+    private boolean isForcingBalanced = true;
 
     public SmiteTeamBuilder(Context context) {
         this.context = context;
@@ -122,9 +123,10 @@ public class SmiteTeamBuilder {
         in.close();
     }
 
-    public void generateTeam(int size, boolean forceOffensive, boolean forceDefensive) {
+    public void generateTeam(int size, boolean forceOffensive, boolean forceDefensive, boolean forceBalanced) {
         isForcingOffensive = forceOffensive;
         isForcingDefensive = forceDefensive;
+        isForcingBalanced = forceBalanced;
         try {
             resetLoadouts();
         } catch (NullPointerException e) {
@@ -132,6 +134,7 @@ public class SmiteTeamBuilder {
         }
         shufflePositions(typeRoll);
         ArrayList<String> loadout;
+        Random random = new Random();
 
         switch (size) {
 
@@ -142,55 +145,55 @@ public class SmiteTeamBuilder {
                 break;
 
             case 2:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 3:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 4:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[3]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[3]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player4Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 5:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[3]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[3]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player4Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[4]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[4]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player5Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
