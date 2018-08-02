@@ -236,7 +236,7 @@ public class SmiteTeamBuilder {
 
             case "Mage":
                 player = MAGES.get(rand.nextInt(MAGES.size() - 1)).toString();
-                build = generateBuild("magical");
+                build = generateBuild("magical", false);
                 if (isForcingOffensive) {
                     while (true) {
                         int offensiveCount = 0;
@@ -246,7 +246,7 @@ public class SmiteTeamBuilder {
                             }
                         }
                         if (offensiveCount < 5) {
-                            build = generateBuild("magical");
+                            build = generateBuild("magical", false);
                         } else {
                             break;
                         }
@@ -257,7 +257,7 @@ public class SmiteTeamBuilder {
 
             case "Guardian":
                 player = GUARDIANS.get(rand.nextInt(GUARDIANS.size() - 1)).toString();
-                build = generateBuild("magical");
+                build = generateBuild("magical", false);
                 if (isForcingDefensive) {
                     while (true) {
                         int defensiveCount = 0;
@@ -267,7 +267,7 @@ public class SmiteTeamBuilder {
                             }
                         }
                         if (defensiveCount < 5) {
-                            build = generateBuild("magical");
+                            build = generateBuild("magical", false);
                         } else {
                             break;
                         }
@@ -278,7 +278,7 @@ public class SmiteTeamBuilder {
 
             case "Warrior":
                 player = WARRIORS.get(rand.nextInt(WARRIORS.size() - 1)).toString();
-                build = generateBuild("physical");
+                build = generateBuild("physical", false);
                 if (isForcingOffensive) {
                     while (true) {
                         int offensiveCount = 0;
@@ -288,7 +288,7 @@ public class SmiteTeamBuilder {
                             }
                         }
                         if (offensiveCount < 3) {
-                            build = generateBuild("physical");
+                            build = generateBuild("physical", false);
                         } else {
                             break;
                         }
@@ -299,7 +299,7 @@ public class SmiteTeamBuilder {
 
             case "Assassin":
                 player = ASSASSINS.get(rand.nextInt(ASSASSINS.size() - 1)).toString();
-                build = generateBuild("physical");
+                build = generateBuild("physical", (player.equals("Ratatoskr")));
                 if (isForcingOffensive) {
                     while (true) {
                         int offensiveCount = 0;
@@ -309,7 +309,7 @@ public class SmiteTeamBuilder {
                             }
                         }
                         if (offensiveCount < 5) {
-                            build = generateBuild("physical");
+                            build = generateBuild("physical", (player.equals("Ratatoskr")));
                         } else {
                             break;
                         }
@@ -320,7 +320,7 @@ public class SmiteTeamBuilder {
 
             case "Hunter":
                 player = HUNTERS.get(rand.nextInt(HUNTERS.size() - 1)).toString();
-                build = generateBuild("physical");
+                build = generateBuild("physical", false);
                 if (isForcingOffensive) {
                     while (true) {
                         int offensiveCount = 0;
@@ -330,7 +330,7 @@ public class SmiteTeamBuilder {
                             }
                         }
                         if (offensiveCount < 5) {
-                            build = generateBuild("physical");
+                            build = generateBuild("physical", false);
                         } else {
                             break;
                         }
@@ -349,13 +349,17 @@ public class SmiteTeamBuilder {
 
     }
 
-    private ArrayList<Item> generateBuild(String type) {
+    private ArrayList<Item> generateBuild(String type, boolean isRatatoskr) {
         ArrayList<Item> build = new ArrayList<>();
         LinkedHashSet<Item> generation = new LinkedHashSet<>();
         Boolean matches;
         Item newItem;
         if (type.equals("physical")) {
-            generation.add(getPhysicalBoot());
+            if (isRatatoskr) {
+                generation.add(new Item(true, false, "Acorn of Yggdrasil"));
+            } else {
+                generation.add(getPhysicalBoot());
+            }
             for (int i = 0; i < 5; i++) {
                 newItem = getPhysicalItem();
                 generation.add(newItem);
