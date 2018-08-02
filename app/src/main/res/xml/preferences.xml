@@ -3,12 +3,12 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="KEY_FORCE_OFFENSIVE"
-        android:summary="Forces attack builds on offensive gods\n(Does not apply to boots)"
+        android:summary="Forces attack builds on offensive gods\n(Can slow down the generator)"
         android:title="Force offensive builds" />
     <SwitchPreference
         android:defaultValue="false"
         android:key="KEY_FORCE_DEFENSIVE"
-        android:summary="Forces tank builds on defensive gods\n(Does not apply to boots)"
+        android:summary="Forces tank builds on defensive gods\n(Can slow down the generator)"
         android:title="Force defensive builds" />
     <SwitchPreference
         android:defaultValue="true"
