@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.baconatornoveg.stg.R;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Random;
@@ -27,26 +26,22 @@ public class SmiteTeamBuilder {
     public ArrayList<String> player4Loadout;
     public ArrayList<String> player5Loadout;
     private Context context;
-    private File bootsCSV;
-    private File godsCSV;
-    private File itemsCSV;
-    private ArrayList<Item> build = new ArrayList<>();
     private Random rand = new Random();
     private String[] typeRoll = {"Mage", "Guardian", "Warrior", "Assassin", "Hunter"};
+    private boolean isForcingOffensive = false;
+    private boolean isForcingDefensive = false;
+    private boolean isForcingBalanced = true;
 
     public SmiteTeamBuilder(Context context) {
         this.context = context;
+        registerLists();
     }
 
     public String getEngineVersion() {
-        return "1.0.0";
+        return "1.1.0";
     }
 
-    public void registerLists() {
-
-        bootsCSV = new File("raw/boots.csv");
-        godsCSV = new File("raw/gods.csv");
-        itemsCSV = new File("raw/items.csv");
+    private void registerLists() {
 
         Scanner in;
 
@@ -61,9 +56,9 @@ public class SmiteTeamBuilder {
             String line = in.nextLine();
             String[] values = line.split(",");
             if (values[1].toUpperCase().equals("TRUE")) {
-                BOOTS.add(new Item(true, false, values[0]));
+                BOOTS.add(new Item(true, false, values[3], values[0]));
             } else {
-                BOOTS.add(new Item(false, true, values[0]));
+                BOOTS.add(new Item(false, true, values[3], values[0]));
             }
         }
 
@@ -118,16 +113,20 @@ public class SmiteTeamBuilder {
             String[] values = line.split(",");
 
             if (values[1].toUpperCase().equals("TRUE") && (values[2].toUpperCase().equals("FALSE"))) {
-                ITEMS.add(new Item(true, false, values[0]));
+                ITEMS.add(new Item(true, false, values[3], values[0]));
             } else if (values[1].toUpperCase().equals("FALSE") && (values[2].toUpperCase().equals("TRUE"))) {
-                ITEMS.add(new Item(false, true, values[0]));
+                ITEMS.add(new Item(false, true, values[3], values[0]));
             } else {
-                ITEMS.add(new Item(true, true, values[0]));
+                ITEMS.add(new Item(true, true, values[3], values[0]));
             }
         }
+        in.close();
     }
 
-    public void generateTeam(int size) {
+    public void generateTeam(int size, boolean forceOffensive, boolean forceDefensive, boolean forceBalanced) {
+        isForcingOffensive = forceOffensive;
+        isForcingDefensive = forceDefensive;
+        isForcingBalanced = forceBalanced;
         try {
             resetLoadouts();
         } catch (NullPointerException e) {
@@ -135,6 +134,7 @@ public class SmiteTeamBuilder {
         }
         shufflePositions(typeRoll);
         ArrayList<String> loadout;
+        Random random = new Random();
 
         switch (size) {
 
@@ -145,55 +145,105 @@ public class SmiteTeamBuilder {
                 break;
 
             case 2:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 3:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 4:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[3]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[3]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0)) || loadout.get(0).equals(player3Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player4Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
 
             case 5:
-                loadout = makePlayerLoadout(typeRoll[0]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[0]); } else { loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]); }
                 player1Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[1]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[1]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player2Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[2]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[2]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player3Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[3]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[3]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0)) || loadout.get(0).equals(player3Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player4Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
-                loadout = makePlayerLoadout(typeRoll[4]);
+                if (isForcingBalanced) { loadout = makePlayerLoadout(typeRoll[4]); } else {
+                    loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    while (loadout.get(0).equals(player1Loadout.get(0)) || loadout.get(0).equals(player2Loadout.get(0)) || loadout.get(0).equals(player3Loadout.get(0)) || loadout.get(0).equals(player4Loadout.get(0))) {
+                        loadout = makePlayerLoadout(typeRoll[random.nextInt(5)]);
+                    }
+                }
                 player5Loadout = loadout;
                 System.out.println(loadout.get(0) + ": " + loadout.get(1));
                 break;
@@ -230,23 +280,26 @@ public class SmiteTeamBuilder {
     private ArrayList<String> makePlayerLoadout(String position) {
         String player = null;
         String playerBuild = null;
+        ArrayList<Item> build;
 
         switch (position) {
 
             case "Mage":
                 player = MAGES.get(rand.nextInt(MAGES.size() - 1)).toString();
-                build = generateBuild("magical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isPhysical) {
-                            offensiveCount++;
+                build = generateBuild("mage", "magical", false);
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isOffensive()) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("magical");
-                    } else {
-                        break;
+                        if (offensiveCount < 5) {
+                            build = generateBuild("mage", "magical", false);
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -254,23 +307,41 @@ public class SmiteTeamBuilder {
 
             case "Guardian":
                 player = GUARDIANS.get(rand.nextInt(GUARDIANS.size() - 1)).toString();
-                playerBuild = generateBuild("magical").toString();
+                build = generateBuild("guardian", "magical", false);
+                if (isForcingDefensive) {
+                    while (true) {
+                        int defensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isDefensive()) {
+                                defensiveCount++;
+                            }
+                        }
+                        if (defensiveCount < 5) {
+                            build = generateBuild("guardian", "magical", false);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                playerBuild = build.toString();
                 break;
 
             case "Warrior":
                 player = WARRIORS.get(rand.nextInt(WARRIORS.size() - 1)).toString();
-                build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                build = generateBuild("warrior", "physical", false);
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isOffensive()) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 3) {
+                            build = generateBuild("warrior", "physical", false);
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -278,18 +349,20 @@ public class SmiteTeamBuilder {
 
             case "Assassin":
                 player = ASSASSINS.get(rand.nextInt(ASSASSINS.size() - 1)).toString();
-                build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                build = generateBuild("assassin", "physical", (player.equals("Ratatoskr")));
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isOffensive()) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 5) {
+                            build = generateBuild("assassin", "physical", (player.equals("Ratatoskr")));
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -297,18 +370,20 @@ public class SmiteTeamBuilder {
 
             case "Hunter":
                 player = HUNTERS.get(rand.nextInt(HUNTERS.size() - 1)).toString();
-                build = generateBuild("physical");
-                while (true) {
-                    int offensiveCount = 0;
-                    for (Item i : build) {
-                        if (!i.isMagical) {
-                            offensiveCount++;
+                build = generateBuild("hunter", "physical", false);
+                if (isForcingOffensive) {
+                    while (true) {
+                        int offensiveCount = 0;
+                        for (Item i : build) {
+                            if (i.isOffensive()) {
+                                offensiveCount++;
+                            }
                         }
-                    }
-                    if (offensiveCount < 4) {
-                        build = generateBuild("physical");
-                    } else {
-                        break;
+                        if (offensiveCount < 5) {
+                            build = generateBuild("hunter", "physical", false);
+                        } else {
+                            break;
+                        }
                     }
                 }
                 playerBuild = build.toString();
@@ -324,13 +399,25 @@ public class SmiteTeamBuilder {
 
     }
 
-    public ArrayList<Item> generateBuild(String type) {
+    private ArrayList<Item> generateBuild(String god, String type, boolean isRatatoskr) {
         ArrayList<Item> build = new ArrayList<>();
         LinkedHashSet<Item> generation = new LinkedHashSet<>();
         Boolean matches;
-        Item newItem = null;
+        Item newItem;
         if (type.equals("physical")) {
-            generation.add(getPhysicalBoot());
+            switch (god) {
+                case "assassin":
+                case "hunter":
+                    if (isRatatoskr) {
+                        generation.add(new Item(true, false, "OFFENSE", "Acorn of Yggdrasil"));
+                    } else {
+                        generation.add(getPhysicalBoot(isForcingOffensive));
+                    }
+                    break;
+                case "warrior":
+                    generation.add(getPhysicalBoot(false));
+                    break;
+            }
             for (int i = 0; i < 5; i++) {
                 newItem = getPhysicalItem();
                 generation.add(newItem);
@@ -343,7 +430,14 @@ public class SmiteTeamBuilder {
 
             build.addAll(0, generation);
         } else {
-            generation.add(getMagicalBoot());
+            switch (god) {
+                case "mage":
+                    generation.add(getMagicalBoot(isForcingOffensive, false));
+                    break;
+                case "guardian":
+                    generation.add(getMagicalBoot(false, true));
+                    break;
+            }
             for (int i = 0; i < 5; i++) {
                 newItem = getMagicalItem();
                 generation.add(newItem);
@@ -358,27 +452,43 @@ public class SmiteTeamBuilder {
         return build;
     }
 
-    private Item getPhysicalBoot() {
+    private Item getPhysicalBoot(boolean isOffensive) {
         Item boot;
         boot = BOOTS.get((rand.nextInt(BOOTS.size())));
-        while (!boot.isPhysical) {
-            boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+        if (isOffensive) {
+            while (boot.isMagical() || !boot.isOffensive()) {
+                boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+            }
+        } else {
+            while (boot.isMagical()) {
+                boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+            }
         }
         return boot;
     }
 
-    private Item getMagicalBoot() {
+    private Item getMagicalBoot(boolean isOffensive, boolean isDefensive) {
         Item boot;
         boot = BOOTS.get((rand.nextInt(BOOTS.size())));
-        while (!boot.isMagical) {
-            boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+        if (isOffensive) {
+            while (boot.isPhysical() || !boot.isOffensive()) {
+                boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+            }
+        } else if (isDefensive) {
+            while (boot.isPhysical() || !boot.isDefensive()) {
+                boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+            }
+        } else {
+            while (boot.isPhysical()) {
+                boot = BOOTS.get((rand.nextInt(BOOTS.size())));
+            }
         }
         return boot;
     }
 
     private Item getPhysicalItem() {
         Item item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
-        while (!item.isPhysical) {
+        while (item.isMagical()) {
             item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
         }
         return item;
@@ -386,7 +496,7 @@ public class SmiteTeamBuilder {
 
     private Item getMagicalItem() {
         Item item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
-        while (!item.isMagical) {
+        while (item.isPhysical()) {
             item = ITEMS.get((int) (Math.random() * (ITEMS.size() - 1) + 1));
         }
         return item;

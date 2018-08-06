@@ -1,7 +1,9 @@
 package com.baconatornoveg.stg;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,21 +14,19 @@ import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
 
 public class BuildActivity extends AppCompatActivity {
 
-    private Context context;
-    private SmiteTeamBuilder stb = MainActivity.getStb();
+    private SmiteTeamBuilder stb;
     private int playerCount = MainActivity.numPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build);
-        context = this;
-        setTextViews(context);
+        Context context = this;
+        stb = new SmiteTeamBuilder(context);
+        setTextViews();
     }
 
-    private void setTextViews(Context context) {
-        //Set context because Android is a real b**** about this
-        Context thisContext = context;
+    private void setTextViews() {
 
         //Initialize TextViews
         TextView player1God = findViewById(R.id.player1God);
@@ -122,9 +122,10 @@ public class BuildActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_reroll:
-                stb.generateTeam(playerCount);
-                MainActivity.prepareBuildActivity();
-                setTextViews(context);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false), prefs.getBoolean("KEY_FORCE_BALANCED", true));
+                MainActivity.prepareBuildActivity(stb);
+                setTextViews();
                 return true;
 
             default:
