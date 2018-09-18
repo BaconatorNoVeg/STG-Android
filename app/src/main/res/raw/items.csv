@@ -24,6 +24,7 @@ Gem of Isolation,FALSE,TRUE,OFFENSE
 Genji's Guard,TRUE,TRUE,DEFENSE
 Gladiator's Shield,TRUE,FALSE,DEFENSE
 Golden Blade,TRUE,FALSE,OFFENSE
+Hastened Katana,TRUE,FALSE,OFFENSE
 Hastened Ring,FALSE,TRUE,OFFENSE
 Heartward Amulet,TRUE,TRUE,DEFENSE
 Hide of the Nemean Lion,TRUE,TRUE,DEFENSE
@@ -37,6 +38,7 @@ Magi's Cloak,TRUE,TRUE,DEFENSE
 Mail of Renewal,TRUE,TRUE,DEFENSE
 Malice,TRUE,FALSE,OFFENSE
 Mantle of Discord,TRUE,TRUE,DEFENSE
+Masamune,TRUE,FALSE,DEFENSE
 Midgardian Mail,TRUE,TRUE,DEFENSE
 Mystical Mail,TRUE,TRUE,DEFENSE
 Obsidian Shard,FALSE,TRUE,OFFENSE
@@ -64,6 +66,7 @@ Spear of Desolation,FALSE,TRUE,OFFENSE
 Spear of the Magus,FALSE,TRUE,OFFENSE
 Spectral Armor,TRUE,TRUE,DEFENSE
 Spirit Robe,TRUE,TRUE,DEFENSE
+Stone Cutting Sword,TRUE,FALSE,OFFENSE
 Stone of Binding,FALSE,TRUE,DEFENSE
 Stone of Fal,FALSE,TRUE,DEFENSE
 Stone of Gaia,TRUE,TRUE,DEFENSE
