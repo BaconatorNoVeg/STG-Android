@@ -1,4 +1,4 @@
-# Smite Team Generator
+# Smite Team Generator (Android Front-end)
 ![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Version-0.3.0-green.svg)
 
 Do you play Smite? Do you get bored playing the same god over and over again? Do you ever find it difficult to choose a new god
@@ -10,6 +10,7 @@ Smite Team Generator is written completely in Java for the Android platform. It 
 ## Features
 - Generates a random team of 1 to 5 players
 - Generates a random build for each teammate
+- Choose how builds are generated through settings
 - More features coming soon
 
 Google Play Testing Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
