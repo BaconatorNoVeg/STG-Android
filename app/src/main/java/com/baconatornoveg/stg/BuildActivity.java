@@ -10,26 +10,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
+import com.baconatornoveg.stglib.SmiteTeamGenerator;
 
 public class BuildActivity extends AppCompatActivity {
 
-    private SmiteTeamBuilder stb;
-    private int playerCount = MainActivity.numPlayers;
+    private SmiteTeamGenerator stb = new SmiteTeamGenerator();
+    private int playerCount = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build);
         Context context = this;
-        stb = new SmiteTeamBuilder(context);
         setTextViews();
     }
 
     private void setTextViews() {
 
         //Initialize TextViews
-        TextView player1God = findViewById(R.id.player1God);
+        /*TextView player1God = findViewById(R.id.player1God);
         TextView player1Build = findViewById(R.id.player1Build);
         TextView player1Build1 = findViewById(R.id.player1Build1);
         TextView player1Build2 = findViewById(R.id.player1Build2);
@@ -63,10 +62,27 @@ public class BuildActivity extends AppCompatActivity {
         TextView player5Build2 = findViewById(R.id.player5Build2);
         TextView player5Build3 = findViewById(R.id.player5Build3);
         TextView player5Build4 = findViewById(R.id.player5Build4);
-        TextView player5Build5 = findViewById(R.id.player5Build5);
+        TextView player5Build5 = findViewById(R.id.player5Build5);*/
+        TextView[] player1 = {findViewById(R.id.player1God), findViewById(R.id.player1Build)};
+        TextView[] player2 = {findViewById(R.id.player2God), findViewById(R.id.player2Build)};
+        TextView[] player3 = {findViewById(R.id.player3God), findViewById(R.id.player3Build)};
+        TextView[] player4 = {findViewById(R.id.player4God), findViewById(R.id.player4Build)};
+        TextView[] player5 = {findViewById(R.id.player5God), findViewById(R.id.player5Build)};
+        TextView[][] players = {player1, player2, player3, player4, player5};
 
-        //Set the text in the TextViews (Need to find a more efficient way to do this)
-        player1God.setText(MainActivity.player1God);
+        //Set the text in the TextViews
+        for (int i = 0; i < playerCount; i++) {
+            players[i][0].setText(MainActivity.players.get(i).get(0));
+            String[] buildArray = processBuild(MainActivity.players.get(i).get(1));
+            String tvString = "";
+            for (int j = 0; j < 6; j++) {
+                tvString += buildArray[j] + "\n";
+            }
+            players[i][1].setText(tvString);
+
+        }
+
+        /*player1God.setText(MainActivity.player1God);
         player1Build.setText(processBuild(MainActivity.player1Build)[0]);
         player1Build1.setText(processBuild(MainActivity.player1Build)[1]);
         player1Build2.setText(processBuild(MainActivity.player1Build)[2]);
@@ -100,7 +116,7 @@ public class BuildActivity extends AppCompatActivity {
         player5Build2.setText(processBuild(MainActivity.player5Build)[2]);
         player5Build3.setText(processBuild(MainActivity.player5Build)[3]);
         player5Build4.setText(processBuild(MainActivity.player5Build)[4]);
-        player5Build5.setText(processBuild(MainActivity.player5Build)[5]);
+        player5Build5.setText(processBuild(MainActivity.player5Build)[5]);*/
     }
 
     private String[] processBuild(String buildArray) {

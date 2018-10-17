@@ -13,12 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.baconatornoveg.stg.engine.SmiteTeamBuilder;
+import com.baconatornoveg.stglib.SmiteTeamGenerator;
+import com.baconatornoveg.stglib.Team;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     public Context context;
-    private SmiteTeamBuilder stb;
+    private SmiteTeamGenerator stb = new SmiteTeamGenerator();
     public static String player1God;
     public static String player1Build;
     public static String player2God;
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     public static String player4Build;
     public static String player5God;
     public static String player5Build;
+    public static Team generatedTeam;
+    public static ArrayList<ArrayList<String>> players = new ArrayList<>();
 
     public static int numPlayers;
     public Intent buildIntent;
@@ -44,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         Button fivePlayerButton = findViewById(R.id.fivePlayer);
         context = this;
         buildIntent = new Intent(getApplicationContext(), BuildActivity.class);
-        stb = new SmiteTeamBuilder(context);
+        stb.getLists(true);
         System.out.println("Smite Team Builder: Android Edition");
-        System.out.println("Version " + stb.getEngineVersion());
+        System.out.println("Version " + stb.getVersion());
         System.out.println("Proudly coded by Joshua Luce");
-        System.out.println("");
+        System.out.println();
         onePlayerButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public static void prepareBuildActivity(SmiteTeamBuilder stb) {
+    public static void prepareBuildActivity(SmiteTeamGenerator stb) {
 
         //Reset strings
         player1God = "";
@@ -115,11 +120,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Set strings
-        player1God = stb.player1Loadout.get(0);
-        player1Build = stb.player1Loadout.get(1);
-
         //If loadout doesn't exist (is null), use blank string; otherwise set the string
-        if (stb.player2Loadout != null) {
+        for (int i = 0; i < numPlayers; i++) {
+            if (generatedTeam.getPlayer(i) != null) {
+                ArrayList<String> player = new ArrayList<>();
+                player.add(generatedTeam.getPlayer(i).getGod());
+                player.add(generatedTeam.getPlayer(i).getBuild().toString());
+                players.add(player);
+            }
+        }
+        /*if (stb.player2Loadout != null) {
             player2God = stb.player2Loadout.get(0);
             player2Build = stb.player2Loadout.get(1);
         } else {
@@ -146,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             player5God = "";
             player5Build = "";
-        }
+        }*/
     }
 
     private void runGenerator(int teamSize) {
@@ -154,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
         boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
         boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
-        stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced);
+        generatedTeam = stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced);
         prepareBuildActivity(stb);
         startActivity(buildIntent);
     }
