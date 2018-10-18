@@ -5,9 +5,9 @@ android {
     defaultConfig {
         applicationId "com.baconatornoveg.stg"
         minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 16
-        versionName "0.3.1"
+        targetSdkVersion 28
+        versionCode 17
+        versionName "0.4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

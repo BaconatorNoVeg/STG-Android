@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public Context context;
-    public static SmiteTeamGenerator stb = new SmiteTeamGenerator();
+    public static SmiteTeamGenerator stb = SplashActivity.stg;
     public static String player1God;
     public static String player1Build;
     public static String player2God;
@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         Button fivePlayerButton = findViewById(R.id.fivePlayer);
         context = this;
         buildIntent = new Intent(getApplicationContext(), BuildActivity.class);
-        stb.getLists(true);
         System.out.println("Smite Team Builder: Android Edition");
         System.out.println("Version " + stb.getVersion());
         System.out.println("Proudly coded by Joshua Luce");
