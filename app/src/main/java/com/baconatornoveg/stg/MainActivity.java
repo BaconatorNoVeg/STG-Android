@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public Context context;
-    private SmiteTeamGenerator stb = new SmiteTeamGenerator();
+    public static SmiteTeamGenerator stb = new SmiteTeamGenerator();
     public static String player1God;
     public static String player1Build;
     public static String player2God;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static String player5God;
     public static String player5Build;
     public static Team generatedTeam;
-    public static ArrayList<ArrayList<String>> players = new ArrayList<>();
+    public static ArrayList<ArrayList<String>> players;
 
     public static int numPlayers;
     public Intent buildIntent;
@@ -104,28 +104,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public static void prepareBuildActivity(SmiteTeamGenerator stb) {
+    public static void prepareBuildActivity(Team team) {
 
         //Reset strings
-        player1God = "";
-        player1Build = "";
-        player2God = "";
-        player2Build = "";
-        player3God = "";
-        player3Build = "";
-        player4God = "";
-        player4Build = "";
-        player5God = "";
-        player5Build = "";
+        players = new ArrayList<>();
 
 
         //Set strings
         //If loadout doesn't exist (is null), use blank string; otherwise set the string
         for (int i = 0; i < numPlayers; i++) {
-            if (generatedTeam.getPlayer(i) != null) {
+            if (team.getPlayer(i) != null) {
                 ArrayList<String> player = new ArrayList<>();
-                player.add(generatedTeam.getPlayer(i).getGod());
-                player.add(generatedTeam.getPlayer(i).getBuild().toString());
+                player.add(team.getPlayer(i).getGod());
+                player.add(team.getPlayer(i).getBuild().toString());
                 players.add(player);
             }
         }
@@ -165,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
         boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
         generatedTeam = stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced);
-        prepareBuildActivity(stb);
+        prepareBuildActivity(generatedTeam);
         startActivity(buildIntent);
     }
 

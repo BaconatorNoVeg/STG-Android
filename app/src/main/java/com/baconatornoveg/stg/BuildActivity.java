@@ -11,11 +11,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.baconatornoveg.stglib.SmiteTeamGenerator;
+import com.baconatornoveg.stglib.Team;
 
 public class BuildActivity extends AppCompatActivity {
 
-    private SmiteTeamGenerator stb = new SmiteTeamGenerator();
-    private int playerCount = 5;
+    private SmiteTeamGenerator stb = MainActivity.stb;
+    private int playerCount = MainActivity.numPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,12 @@ public class BuildActivity extends AppCompatActivity {
         TextView[] player4 = {findViewById(R.id.player4God), findViewById(R.id.player4Build)};
         TextView[] player5 = {findViewById(R.id.player5God), findViewById(R.id.player5Build)};
         TextView[][] players = {player1, player2, player3, player4, player5};
+
+        // Reset the text in the TextViews
+        for (int i =0; i < 5; i++) {
+            players[i][0].setText("");
+            players[i][1].setText("");
+        }
 
         //Set the text in the TextViews
         for (int i = 0; i < playerCount; i++) {
@@ -139,8 +146,8 @@ public class BuildActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_reroll:
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false), prefs.getBoolean("KEY_FORCE_BALANCED", true));
-                MainActivity.prepareBuildActivity(stb);
+                Team rerolledTeam = stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false), prefs.getBoolean("KEY_FORCE_BALANCED", true));
+                MainActivity.prepareBuildActivity(rerolledTeam);
                 setTextViews();
                 return true;
 
