@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         Button fivePlayerButton = findViewById(R.id.fivePlayer);
         context = this;
         buildIntent = new Intent(getApplicationContext(), BuildActivity.class);
-        System.out.println("Smite Team Builder: Android Edition");
-        System.out.println("Version " + stb.getVersion());
+        System.out.println("Smite Team Generator: Android Front-End");
+        System.out.println("STG-Lib Version " + stb.getVersion());
         System.out.println("Proudly coded by Joshua Luce");
         System.out.println();
         onePlayerButton.setOnClickListener(new View.OnClickListener() {
