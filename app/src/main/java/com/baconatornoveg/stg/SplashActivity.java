@@ -2,9 +2,12 @@ package com.baconatornoveg.stg;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.baconatornoveg.stglib.SmiteTeamGenerator;
 
@@ -33,6 +36,17 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         context = this;
+        TextView appSubtitle = findViewById(R.id.appSubtitle);
+        String appVersion = null;
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(getPackageName(), 0);
+            appVersion = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String stgLibVersion = stg.getVersion();
+        String subtitleString = "App Version: " + appVersion + "\nSTG-Lib Version: " + stgLibVersion + "\nProudly coded by Joshua Luce.";
+        appSubtitle.setText(subtitleString);
         mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         new GetGeneratorLists().execute();
     }

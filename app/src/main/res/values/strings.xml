@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Smite Team Generator</string>
-    <string name="how_many_players_are_there">How many players are there?</string>
+    <string name="how_many_players_are_there">Choose Team Size</string>
+    <string name="one_player">Solo</string>
+    <string name="two_player">Duo</string>
+    <string name="three_player">Joust</string>
+    <string name="four_player">Siege</string>
+    <string name="five_player">Full</string>
     <string name="donate">Donate</string>
     <string name="reroll">Reroll</string>
     <string name="settings">Settings</string>
