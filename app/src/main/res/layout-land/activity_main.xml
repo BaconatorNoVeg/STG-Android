@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.baconatornoveg.stg.MainActivity">
+
+    <TextView
+        android:id="@+id/testText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/how_many_players_are_there"
+        android:textAllCaps="false"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/onePlayer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/one_player"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/threePlayer"
+        app:layout_constraintEnd_toStartOf="@+id/twoPlayer"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testText" />
+
+    <Button
+        android:id="@+id/twoPlayer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/two_player"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/fourPlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/onePlayer"
+        app:layout_constraintTop_toBottomOf="@+id/testText" />
+
+    <Button
+        android:id="@+id/threePlayer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/three_player"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/fivePlayer"
+        app:layout_constraintEnd_toStartOf="@+id/fourPlayer"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onePlayer" />
+
+    <Button
+        android:id="@+id/fourPlayer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/four_player"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/fivePlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/threePlayer"
+        app:layout_constraintTop_toBottomOf="@+id/twoPlayer" />
+
+    <Button
+        android:id="@+id/fivePlayer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/five_player"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threePlayer" />
+
+</android.support.constraint.ConstraintLayout>
