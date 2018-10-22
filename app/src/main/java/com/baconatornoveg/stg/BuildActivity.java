@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baconatornoveg.stglib.SmiteTeamGenerator;
 import com.baconatornoveg.stglib.Team;
@@ -32,6 +33,12 @@ public class BuildActivity extends AppCompatActivity {
         loadouts = new LinearLayout[]{findViewById(R.id.player1Loadout), findViewById(R.id.player2Loadout), findViewById(R.id.player3Loadout), findViewById(R.id.player4Loadout), findViewById(R.id.player5Loadout)};
         for (int i = 0; i < 5; i++) {
             final int currentPlayer = i;
+            loadouts[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Long press player to show options", Toast.LENGTH_SHORT).show();
+                }
+            });
             loadouts[i].setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
