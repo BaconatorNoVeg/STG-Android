@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < numPlayers; i++) {
             if (team.getPlayer(i) != null) {
                 ArrayList<String> player = new ArrayList<>();
-                player.add(team.getPlayer(i).getGod());
+                player.add(team.getPlayer(i).getGod().getName());
                 player.add(team.getPlayer(i).getBuild().toString());
                 players.add(player);
             }

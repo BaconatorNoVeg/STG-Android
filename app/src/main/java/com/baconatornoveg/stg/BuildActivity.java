@@ -24,6 +24,7 @@ public class BuildActivity extends AppCompatActivity {
     private SmiteTeamGenerator stb = MainActivity.stb;
     private int playerCount = MainActivity.numPlayers;
     LinearLayout[] loadouts;
+    private Team team = MainActivity.generatedTeam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class BuildActivity extends AppCompatActivity {
                 public boolean onLongClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Player Options")
-                            .setItems(new String[]{"Share"}, new DialogInterface.OnClickListener() {
+                            .setItems(new String[]{"Share", "Reroll Player"}, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     if (which == 0) {
                                         Intent sendIntent = new Intent();
@@ -58,6 +59,10 @@ public class BuildActivity extends AppCompatActivity {
                                         sendIntent.putExtra(Intent.EXTRA_TEXT, formattedPlayer);
                                         sendIntent.setType("text/plain");
                                         startActivity(sendIntent);
+                                    } else if (which == 1) {
+                                        team.rerollPlayer(currentPlayer);
+                                        MainActivity.prepareBuildActivity(team);
+                                        setTextViews();
                                     }
                                 }
                             });
@@ -130,6 +135,7 @@ public class BuildActivity extends AppCompatActivity {
             case R.id.action_reroll:
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 Team rerolledTeam = stb.generateTeam(playerCount, prefs.getBoolean("KEY_FORCE_OFFENSIVE", false), prefs.getBoolean("KEY_FORCE_DEFENSIVE", false), prefs.getBoolean("KEY_FORCE_BALANCED", true));
+                team = rerolledTeam;
                 MainActivity.prepareBuildActivity(rerolledTeam);
                 setTextViews();
                 return true;
