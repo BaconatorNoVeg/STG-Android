@@ -1,5 +1,5 @@
 # Smite Team Generator (Android Front-end)
-![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.0.1-green.svg) ![](https://img.shields.io/badge/Beta-1.1.0-blue.svg)
+![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.1.0-green.svg) ![](https://img.shields.io/badge/Beta-1.1.0-blue.svg)
 
 Starting with version 0.4.0, this will require [STG-Lib](https://github.com/BaconatorNoVeg/STG-Lib).
 
@@ -13,6 +13,8 @@ Smite Team Generator is written completely in Java for the Android platform. It 
 - Generates a random team of 1 to 5 players
 - Generates a random build for each teammate
 - Choose how builds are generated through settings
+- Share individual players or the whole team to a messaging app of your choice
+- Reroll individual players or the whole team
 - More features coming soon
 
 Google Play Testing Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
