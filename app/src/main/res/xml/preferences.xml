@@ -15,4 +15,9 @@
         android:key="KEY_FORCE_BALANCED"
         android:summary="Forces each team member to have a different type god"
         android:title="Force balanced team" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="KEY_FORCE_BOOTS"
+        android:summary="Forces boots on every build"
+        android:title="Force boots" />
 </PreferenceScreen>

@@ -154,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
         boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
         boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
         boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
-        generatedTeam = stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced);
+        boolean forcingBoots = prefs.getBoolean("KEY_FORCE_BOOTS", true);
+        generatedTeam = stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced, forcingBoots);
         prepareBuildActivity(generatedTeam);
         startActivity(buildIntent);
     }
