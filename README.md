@@ -1,5 +1,5 @@
 # Smite Team Generator (Android Front-end)
-![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.1.0-green.svg) ![](https://img.shields.io/badge/Beta-1.1.1-blue.svg)
+![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.3.0-green.svg) ![](https://img.shields.io/badge/Beta-1.3.0-blue.svg)
 
 Starting with version 0.4.0, this will require [STG-Lib](https://github.com/BaconatorNoVeg/STG-Lib).
 
