@@ -134,11 +134,12 @@ public class BuildActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_reroll:
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
-                boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
+                int buildType = Integer.parseInt(prefs.getString("KEY_BUILD_TYPE", "0"));
                 boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
                 boolean forcingBoots = prefs.getBoolean("KEY_FORCE_BOOTS", true);
-                Team rerolledTeam = stb.generateTeam(playerCount, forcingOffensive, forcingDefensive, forcingBalanced, forcingBoots);
+                boolean warriorsOffensive = prefs.getBoolean("KEY_WARRIORS_OFF", false);
+                stb.warriorsOffensive = warriorsOffensive;
+                Team rerolledTeam = stb.generateTeam(playerCount, forcingBalanced, forcingBoots, buildType);
                 team = rerolledTeam;
                 MainActivity.prepareBuildActivity(rerolledTeam);
                 setTextViews();

@@ -10,4 +10,18 @@
     <string name="reroll">Reroll</string>
     <string name="share">Share Team</string>
     <string name="settings">Settings</string>
+    <string-array name="buildtypes">
+        <item>Default Random</item>
+        <item>Full Offensive</item>
+        <item>Full Defensive</item>
+        <item>Half-and-Half</item>
+        <item>Off on Off, Def on Def</item>
+    </string-array>
+    <string-array name="buildtypesindex">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>

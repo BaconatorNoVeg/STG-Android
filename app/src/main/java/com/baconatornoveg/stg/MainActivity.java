@@ -151,11 +151,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void runGenerator(int teamSize) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean forcingOffensive = prefs.getBoolean("KEY_FORCE_OFFENSIVE", false);
-        boolean forcingDefensive = prefs.getBoolean("KEY_FORCE_DEFENSIVE", false);
+        int buildType = Integer.parseInt(prefs.getString("KEY_BUILD_TYPE", "0"));
         boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
         boolean forcingBoots = prefs.getBoolean("KEY_FORCE_BOOTS", true);
-        generatedTeam = stb.generateTeam(teamSize, forcingOffensive, forcingDefensive, forcingBalanced, forcingBoots);
+        boolean warriorsOffensive = prefs.getBoolean("KEY_WARRIORS_OFF", false);
+        stb.warriorsOffensive = warriorsOffensive;
+        generatedTeam = stb.generateTeam(teamSize, forcingBalanced, forcingBoots, buildType);
         prepareBuildActivity(generatedTeam);
         startActivity(buildIntent);
     }
