@@ -21,4 +21,9 @@
         android:key="KEY_FORCE_BOOTS"
         android:summary="Forces boots on every build"
         android:title="Force boots" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="KEY_RELICS_ENABLED"
+        android:summary="Generate relics in the builds"
+        android:title="Enable relics" />
 </PreferenceScreen>
