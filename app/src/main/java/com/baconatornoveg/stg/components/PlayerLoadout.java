@@ -11,5 +11,6 @@ public class PlayerLoadout extends LinearLayout {
         setOrientation(VERTICAL);
         setPadding(0, 0, 0, 50);
         setLongClickable(true);
+        setBackgroundResource(R.drawable.list_clickable);
     }
 }
