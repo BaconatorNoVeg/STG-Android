@@ -1,20 +1,14 @@
 package com.baconatornoveg.stg;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baconatornoveg.stg.components.LoadoutLongClickListener;
 import com.baconatornoveg.stg.components.PlayerBuildTextView;
@@ -26,7 +20,7 @@ import com.baconatornoveg.stglib.Team;
 
 public class BuildActivity extends AppCompatActivity {
 
-    private SmiteTeamGenerator stb = MainActivity.stb;
+    private SmiteTeamGenerator stb = MainActivity.stg;
     private int playerCount = MainActivity.numPlayers;
     LinearLayout loadouts;
     private Team team = MainActivity.generatedTeam;

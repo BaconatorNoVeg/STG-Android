@@ -1,16 +1,25 @@
 package com.baconatornoveg.stg.components;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.baconatornoveg.stg.BuildActivity;
 import com.baconatornoveg.stg.MainActivity;
+import com.baconatornoveg.stg.R;
+import com.baconatornoveg.stglib.Item;
 import com.baconatornoveg.stglib.Player;
 import com.baconatornoveg.stglib.Team;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoadoutLongClickListener implements View.OnLongClickListener {
 
@@ -34,7 +43,7 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
     public boolean onLongClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Player Options");
-        builder.setItems(new String[]{"Share", "Reroll Player"}, new DialogInterface.OnClickListener() {
+        builder.setItems(new String[]{"Share", "Reroll Player", "Save Build"}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -62,6 +71,46 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                         teamData.rerollPlayer(index);
                         MainActivity.prepareBuildActivity(teamData);
                         buildActivity.setTextViews();
+                        break;
+                    case 2:
+                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        LayoutInflater li = LayoutInflater.from(context);
+                        View saveView = li.inflate(R.layout.save_build_dialog, null);
+                        alertDialogBuilder.setView(saveView);
+                        final EditText userInput = saveView.findViewById(R.id.build_name_input);
+                        alertDialogBuilder
+                                .setCancelable(true)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String buildName = userInput.getText().toString();
+                                        JSONObject savedBuild = new JSONObject();
+                                        JSONArray buildArray = new JSONArray();
+                                        for (Item i : playerData.getBuildAsItems()) {
+                                            buildArray.put(i.toString());
+                                        }
+                                        JSONArray relicsArray = new JSONArray();
+                                        for (Item i : playerData.getRelicsAsItems()) {
+                                            relicsArray.put(i.toString());
+                                        }
+                                        try {
+                                            savedBuild.put("name", buildName);
+                                            savedBuild.put("god", playerData.getGod().getName());
+                                            savedBuild.put("build", buildArray);
+                                            savedBuild.put("relics", relicsArray);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                })
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
                         break;
                 }
             }

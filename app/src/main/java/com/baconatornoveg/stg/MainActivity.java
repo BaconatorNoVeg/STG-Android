@@ -17,26 +17,32 @@ import com.baconatornoveg.stglib.SmiteTeamGenerator;
 import com.baconatornoveg.stglib.Team;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Context context;
-    public static SmiteTeamGenerator stb = SplashActivity.stg;
-    public static String player1God;
-    public static String player1Build;
-    public static String player2God;
-    public static String player2Build;
-    public static String player3God;
-    public static String player3Build;
-    public static String player4God;
-    public static String player4Build;
-    public static String player5God;
-    public static String player5Build;
+    public static SmiteTeamGenerator stg = SplashActivity.stg;
     public static Team generatedTeam;
     public static ArrayList<ArrayList<String>> players;
-
     public static int numPlayers;
+    public Context context;
     public Intent buildIntent;
+
+    public static void prepareBuildActivity(Team team) {
+
+        //Reset strings
+        players = new ArrayList<>();
+        //Set strings
+        //If loadout doesn't exist (is null), use blank string; otherwise set the string
+        for (int i = 0; i < numPlayers; i++) {
+            if (team.getPlayer(i) != null) {
+                ArrayList<String> player = new ArrayList<>();
+                player.add(team.getPlayer(i).getGod().getName());
+                player.add(team.getPlayer(i).getBuild().toString());
+                players.add(player);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         buildIntent = new Intent(getApplicationContext(), BuildActivity.class);
         System.out.println("Smite Team Generator: Android Front-End");
-        System.out.println("STG-Lib Version " + stb.getVersion());
+        System.out.println("STG-Lib Version " + stg.getVersion());
         System.out.println("Proudly coded by Joshua Luce");
         System.out.println();
         onePlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -99,64 +105,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar, menu);
+        inflater.inflate(R.menu.action_main, menu);
         return true;
-    }
-
-    public static void prepareBuildActivity(Team team) {
-
-        //Reset strings
-        players = new ArrayList<>();
-
-
-        //Set strings
-        //If loadout doesn't exist (is null), use blank string; otherwise set the string
-        for (int i = 0; i < numPlayers; i++) {
-            if (team.getPlayer(i) != null) {
-                ArrayList<String> player = new ArrayList<>();
-                player.add(team.getPlayer(i).getGod().getName());
-                player.add(team.getPlayer(i).getBuild().toString());
-                players.add(player);
-            }
-        }
-        /*if (stb.player2Loadout != null) {
-            player2God = stb.player2Loadout.get(0);
-            player2Build = stb.player2Loadout.get(1);
-        } else {
-            player2God = "";
-            player2Build = "";
-        }
-        if (stb.player3Loadout != null) {
-            player3God = stb.player3Loadout.get(0);
-            player3Build = stb.player3Loadout.get(1);
-        } else {
-            player3God = "";
-            player3Build = "";
-        }
-        if (stb.player4Loadout != null) {
-            player4God = stb.player4Loadout.get(0);
-            player4Build = stb.player4Loadout.get(1);
-        } else {
-            player4God = "";
-            player4Build = "";
-        }
-        if (stb.player5Loadout != null) {
-            player5God = stb.player5Loadout.get(0);
-            player5Build = stb.player5Loadout.get(1);
-        } else {
-            player5God = "";
-            player5Build = "";
-        }*/
     }
 
     private void runGenerator(int teamSize) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        int buildType = Integer.parseInt(prefs.getString("KEY_BUILD_TYPE", "0"));
+        int buildType = Integer.parseInt(Objects.requireNonNull(prefs.getString("KEY_BUILD_TYPE", "0")));
         boolean forcingBalanced = prefs.getBoolean("KEY_FORCE_BALANCED", true);
         boolean forcingBoots = prefs.getBoolean("KEY_FORCE_BOOTS", true);
-        boolean warriorsOffensive = prefs.getBoolean("KEY_WARRIORS_OFF", false);
-        stb.warriorsOffensive = warriorsOffensive;
-        generatedTeam = stb.generateTeam(teamSize, forcingBalanced, forcingBoots, buildType);
+        stg.warriorsOffensive = prefs.getBoolean("KEY_WARRIORS_OFF", false);
+        generatedTeam = stg.generateTeam(teamSize, forcingBalanced, forcingBoots, buildType);
         prepareBuildActivity(generatedTeam);
         startActivity(buildIntent);
     }
@@ -172,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_options:
                 Intent optionsIntent = new Intent(getApplicationContext(), OptionsActivity.class);
                 startActivity(optionsIntent);
+                return true;
+
+            case R.id.action_view_saved:
+                Intent savedIntent = new Intent(getApplicationContext(), SavedActivity.class);
+                startActivity(savedIntent);
                 return true;
 
             default:
