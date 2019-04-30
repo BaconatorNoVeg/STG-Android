@@ -6,13 +6,16 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.baconatornoveg.stg.database.BuildDatabase;
 import com.baconatornoveg.stglib.SmiteTeamGenerator;
 import com.baconatornoveg.stglib.Team;
 
@@ -21,6 +24,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static BuildDatabase buildDatabase;
     public static SmiteTeamGenerator stg = SplashActivity.stg;
     public static Team generatedTeam;
     public static ArrayList<ArrayList<String>> players;
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buildDatabase = Room.databaseBuilder(getApplicationContext(), BuildDatabase.class, "builddb").allowMainThreadQueries().build();
         Button onePlayerButton = findViewById(R.id.onePlayer);
         Button twoPlayerButton = findViewById(R.id.twoPlayer);
         Button threePlayerButton = findViewById(R.id.threePlayer);

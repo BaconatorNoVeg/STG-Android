@@ -6,9 +6,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.baconatornoveg.stg.database.BuildDatabase;
 import com.baconatornoveg.stglib.SmiteTeamGenerator;
 
 public class SplashActivity extends AppCompatActivity {
@@ -36,6 +39,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         context = this;
+        BuildDatabase db = Room
+                .databaseBuilder(getApplicationContext(), BuildDatabase.class, "builds")
+                .build();
         TextView appSubtitle = findViewById(R.id.appSubtitle);
         String appVersion = null;
         try {

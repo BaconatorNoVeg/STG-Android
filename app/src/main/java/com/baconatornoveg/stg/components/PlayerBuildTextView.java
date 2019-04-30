@@ -3,7 +3,9 @@ package com.baconatornoveg.stg.components;
 import android.content.Context;
 import android.widget.TextView;
 
-public class PlayerBuildTextView extends android.support.v7.widget.AppCompatTextView {
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class PlayerBuildTextView extends AppCompatTextView {
     public PlayerBuildTextView(Context context, String text, int type) {
         super(context);
         setText(text);

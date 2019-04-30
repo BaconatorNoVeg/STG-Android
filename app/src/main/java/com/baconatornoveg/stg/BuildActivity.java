@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.baconatornoveg.stg.components.LoadoutLongClickListener;
 import com.baconatornoveg.stg.components.PlayerBuildTextView;

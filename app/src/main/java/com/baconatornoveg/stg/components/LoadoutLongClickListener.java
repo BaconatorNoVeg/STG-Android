@@ -9,10 +9,12 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.baconatornoveg.stg.BuildActivity;
 import com.baconatornoveg.stg.MainActivity;
 import com.baconatornoveg.stg.R;
+import com.baconatornoveg.stg.database.DBPlayer;
 import com.baconatornoveg.stglib.Item;
 import com.baconatornoveg.stglib.Player;
 import com.baconatornoveg.stglib.Team;
@@ -42,8 +44,8 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
     @Override
     public boolean onLongClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Player Options");
-        builder.setItems(new String[]{"Share", "Reroll Player", "Save Build"}, new DialogInterface.OnClickListener() {
+        builder.setTitle("DBPlayer Options");
+        builder.setItems(new String[]{"Share", "Reroll DBPlayer", "Save Build"}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -84,23 +86,9 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         String buildName = userInput.getText().toString();
-                                        JSONObject savedBuild = new JSONObject();
-                                        JSONArray buildArray = new JSONArray();
-                                        for (Item i : playerData.getBuildAsItems()) {
-                                            buildArray.put(i.toString());
-                                        }
-                                        JSONArray relicsArray = new JSONArray();
-                                        for (Item i : playerData.getRelicsAsItems()) {
-                                            relicsArray.put(i.toString());
-                                        }
-                                        try {
-                                            savedBuild.put("name", buildName);
-                                            savedBuild.put("god", playerData.getGod().getName());
-                                            savedBuild.put("build", buildArray);
-                                            savedBuild.put("relics", relicsArray);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
+                                        DBPlayer player = new DBPlayer(buildName, playerData.getGod().getName(), playerData.getBuild().toString(), playerData.getRelics().toString());
+                                        MainActivity.buildDatabase.dao().insertAll(player);
+                                        Toast.makeText(context, "Build saved", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
