@@ -44,8 +44,8 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
     @Override
     public boolean onLongClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("DBPlayer Options");
-        builder.setItems(new String[]{"Share", "Reroll DBPlayer", "Save Build"}, new DialogInterface.OnClickListener() {
+        builder.setTitle("Player Options");
+        builder.setItems(new String[]{"Share", "Reroll Player", "Save Build"}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -80,13 +80,19 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                         View saveView = li.inflate(R.layout.save_build_dialog, null);
                         alertDialogBuilder.setView(saveView);
                         final EditText userInput = saveView.findViewById(R.id.build_name_input);
+                        final int assignedId;
+                        if (MainActivity.buildDatabase.dao().loadAll().size() == 0) {
+                            assignedId = 0;
+                        } else {
+                            assignedId = MainActivity.buildDatabase.dao().getLast().getId()+1;
+                        }
                         alertDialogBuilder
                                 .setCancelable(true)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         String buildName = userInput.getText().toString();
-                                        DBPlayer player = new DBPlayer(buildName, playerData.getGod().getName(), playerData.getBuild().toString(), playerData.getRelics().toString());
+                                        DBPlayer player = new DBPlayer(assignedId, buildName, playerData.getGod().getName(), playerData.getBuild().toString(), playerData.getRelics().toString());
                                         MainActivity.buildDatabase.dao().insertAll(player);
                                         Toast.makeText(context, "Build saved", Toast.LENGTH_SHORT).show();
                                     }

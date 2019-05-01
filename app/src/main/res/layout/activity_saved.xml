@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-</androidx.constraintlayout.ConstraintLayout>
+<LinearLayout
+    android:id="@+id/saved_list"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></LinearLayout>
+    <TextView
+        android:id="@+id/empty_list"
+        android:text="@string/no_saved"
+        android:enabled="false"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center" />
+</androidx.constraintlayout.widget.ConstraintLayout>

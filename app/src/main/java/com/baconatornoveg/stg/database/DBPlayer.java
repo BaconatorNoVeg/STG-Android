@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import com.baconatornoveg.stg.MainActivity;
 
-@Entity
+@Entity(tableName = "players")
 public class DBPlayer {
     @PrimaryKey
     private int id;
@@ -19,16 +19,12 @@ public class DBPlayer {
     @ColumnInfo(name = "relics")
     private String relics;
 
-    public DBPlayer(String buildName, String god, String build, String relics) {
-        this.id = MainActivity.buildDatabase.dao().loadAll().size();
+    public DBPlayer(int id, String buildName, String god, String build, String relics) {
+        this.id = id;
         this.buildName = buildName;
         this.god = god;
         this.build = build;
         this.relics = relics;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getId() {
@@ -49,5 +45,9 @@ public class DBPlayer {
 
     public String getRelics() {
         return relics;
+    }
+
+    public void setBuildName(String name) {
+        this.buildName = name;
     }
 }

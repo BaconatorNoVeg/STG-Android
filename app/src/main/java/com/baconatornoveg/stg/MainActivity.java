@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buildDatabase = Room.databaseBuilder(getApplicationContext(), BuildDatabase.class, "builddb").allowMainThreadQueries().build();
+        buildDatabase = Room.databaseBuilder(getApplicationContext(), BuildDatabase.class, "builddb").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         Button onePlayerButton = findViewById(R.id.onePlayer);
         Button twoPlayerButton = findViewById(R.id.twoPlayer);
         Button threePlayerButton = findViewById(R.id.threePlayer);
