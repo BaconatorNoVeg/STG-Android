@@ -93,7 +93,7 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                                     public void onClick(DialogInterface dialog, int which) {
                                         String buildName = userInput.getText().toString();
                                         if ("".equals(buildName)) {
-                                            buildName = String.valueOf(System.nanoTime());
+                                            buildName = playerData.getGod().getName();
                                         }
                                         DBPlayer player = new DBPlayer(assignedId, buildName, playerData.getGod().getName(), playerData.getBuild().toString(), playerData.getRelics().toString());
                                         MainActivity.buildDatabase.dao().insertAll(player);

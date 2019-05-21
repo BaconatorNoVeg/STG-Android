@@ -78,6 +78,9 @@ public class SavedBuildLayout extends LinearLayout {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 String buildName = userInput.getText().toString();
+                                                if ("".equals(buildName)) {
+                                                    buildName = dao.getBuild(buildIndex).getGod();
+                                                }
                                                 DBPlayer updatedPlayer = dao.getBuild(buildIndex);
                                                 updatedPlayer.setBuildName(buildName);
                                                 dao.update(updatedPlayer);
