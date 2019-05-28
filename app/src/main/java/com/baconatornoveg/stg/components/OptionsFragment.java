@@ -1,8 +1,10 @@
-package com.baconatornoveg.stg;
+package com.baconatornoveg.stg.components;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+
+import com.baconatornoveg.stg.R;
 
 public class OptionsFragment extends PreferenceFragment {
     @Override

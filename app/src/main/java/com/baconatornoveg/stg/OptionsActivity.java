@@ -5,6 +5,8 @@ import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.baconatornoveg.stg.components.OptionsFragment;
+
 public class OptionsActivity extends AppCompatActivity {
 
     public boolean isForcingOffensive;
