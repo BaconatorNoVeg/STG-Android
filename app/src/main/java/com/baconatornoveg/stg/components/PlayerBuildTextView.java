@@ -9,7 +9,7 @@ public class PlayerBuildTextView extends AppCompatTextView {
         super(context);
         setText(text);
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
-        switch(type) {
+        switch (type) {
             case 1:
                 setTextSize(18f);
                 break;

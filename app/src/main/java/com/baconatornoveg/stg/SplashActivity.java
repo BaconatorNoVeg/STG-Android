@@ -16,23 +16,9 @@ import com.baconatornoveg.stglib.SmiteTeamGenerator;
 
 public class SplashActivity extends AppCompatActivity {
 
-    public Context context;
     public static SmiteTeamGenerator stg = new SmiteTeamGenerator();
+    public Context context;
     public Intent mainIntent;
-
-    private class GetGeneratorLists extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String[] params) {
-            stg.getLists(false);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String message) {
-            startActivity(mainIntent);
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +41,19 @@ public class SplashActivity extends AppCompatActivity {
         appSubtitle.setText(subtitleString);
         mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         new GetGeneratorLists().execute();
+    }
+
+    private class GetGeneratorLists extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String[] params) {
+            stg.getLists(false);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String message) {
+            startActivity(mainIntent);
+            finish();
+        }
     }
 }

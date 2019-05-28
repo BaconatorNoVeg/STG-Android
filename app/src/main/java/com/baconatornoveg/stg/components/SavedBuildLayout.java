@@ -44,11 +44,11 @@ public class SavedBuildLayout extends LinearLayout {
                                 stringBuilder.append(dao.getBuild(buildIndex).getRelics());
                                 stringBuilder.append("\n\n");
                                 String build = dao.getBuild(buildIndex).getBuild();
-                                build = build.substring(1, build.length()-1);
+                                build = build.substring(1, build.length() - 1);
                                 String[] pBuild = build.split(",");
                                 for (int i = 0; i < pBuild.length; i++) {
                                     stringBuilder.append(pBuild[i]);
-                                    if (i < pBuild.length-1) {
+                                    if (i < pBuild.length - 1) {
                                         stringBuilder.append("\n");
                                     }
                                 }

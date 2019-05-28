@@ -26,12 +26,14 @@ class SavedBuildOnClickListener implements View.OnClickListener {
     private Activity activity;
     private int id;
     private String idString;
+
     public SavedBuildOnClickListener(Context context, int id) {
         this.context = context;
         this.id = id;
         idString = "";
         idString += id;
     }
+
     @Override
     public void onClick(View v) {
         Intent viewSavedBuildIntent = new Intent(context, SavedBuildActivity.class);

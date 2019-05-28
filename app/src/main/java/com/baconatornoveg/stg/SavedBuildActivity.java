@@ -34,8 +34,8 @@ public class SavedBuildActivity extends AppCompatActivity {
         godName.setText(dao.getBuild(buildKey).getGod());
         String rawBuild = dao.getBuild(buildKey).getBuild();
         String rawRelics = dao.getBuild(buildKey).getRelics();
-        String[] processedBuild = rawBuild.substring(1, rawBuild.length()-1).split(",");
-        String[] processedRelics = rawRelics.substring(1, rawRelics.length()-1).split(",");
+        String[] processedBuild = rawBuild.substring(1, rawBuild.length() - 1).split(",");
+        String[] processedRelics = rawRelics.substring(1, rawRelics.length() - 1).split(",");
         for (int i = 0; i < 6; i++) {
             PlayerBuildTextView buildTextView = new PlayerBuildTextView(this, processedBuild[i], 0);
             buildLayout.addView(buildTextView);

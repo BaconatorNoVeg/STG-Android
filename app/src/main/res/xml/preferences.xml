@@ -3,14 +3,14 @@
     <ListPreference
         android:entries="@array/buildtypes"
         android:entryValues="@array/buildtypesindex"
-        android:title="Build Type"
+        android:key="KEY_BUILD_TYPE"
         android:summary="Tap to change the selected build type for all players\n\nHere is a description of each:\n- Default Random: Completely random builds\n- Full Offensive: Only offensive items\n- Full Defensive: Only defensive items\n- Half-and-Half: Half offensive half defensive\n- Off on off, def on def: Offensive items on offensive gods, defensive items on defensive gods"
-        android:key="KEY_BUILD_TYPE" />
+        android:title="Build Type" />
     <SwitchPreference
         android:defaultValue="false"
         android:key="KEY_WARRIORS_OFF"
-        android:title="Are warriors offensive?"
-        android:summary="Turn this on to consider warriors offensive to the generator" />
+        android:summary="Turn this on to consider warriors offensive to the generator"
+        android:title="Are warriors offensive?" />
     <SwitchPreference
         android:defaultValue="true"
         android:key="KEY_FORCE_BALANCED"

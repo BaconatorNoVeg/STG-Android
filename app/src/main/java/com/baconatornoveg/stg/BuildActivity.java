@@ -21,11 +21,11 @@ import com.baconatornoveg.stglib.Team;
 
 public class BuildActivity extends AppCompatActivity {
 
+    LinearLayout loadouts;
+    boolean relicsEnabled;
     private SmiteTeamGenerator stb = MainActivity.stg;
     private int playerCount = MainActivity.numPlayers;
-    LinearLayout loadouts;
     private Team team = MainActivity.generatedTeam;
-    boolean relicsEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,14 +92,18 @@ public class BuildActivity extends AppCompatActivity {
                     String[] build = team.getPlayer(i).getBuildAsStringArray();
                     for (int j = 0; j < 6; j++) {
                         formattedPlayer += "- " + build[j];
-                        if (j != 5) { formattedPlayer += "\n"; }
+                        if (j != 5) {
+                            formattedPlayer += "\n";
+                        }
                     }
                     if (relicsEnabled) {
                         String[] relics = team.getPlayer(i).getRelicsAsStringArray();
                         formattedPlayer += "\n\nRelics: ";
                         for (int j = 0; j < 2; j++) {
                             formattedPlayer += relics[j];
-                            if (j != 1) { formattedPlayer += "\n"; }
+                            if (j != 1) {
+                                formattedPlayer += "\n";
+                            }
                         }
                     }
                     formattedPlayer += "\n";

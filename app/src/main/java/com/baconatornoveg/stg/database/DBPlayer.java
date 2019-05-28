@@ -33,6 +33,10 @@ public class DBPlayer {
         return buildName;
     }
 
+    public void setBuildName(String name) {
+        this.buildName = name;
+    }
+
     public String getGod() {
         return god;
     }
@@ -43,9 +47,5 @@ public class DBPlayer {
 
     public String getRelics() {
         return relics;
-    }
-
-    public void setBuildName(String name) {
-        this.buildName = name;
     }
 }

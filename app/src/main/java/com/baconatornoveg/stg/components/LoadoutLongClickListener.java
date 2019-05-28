@@ -48,14 +48,18 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                         String[] build = playerData.getBuildAsStringArray();
                         String formattedPlayer = playerData.getGod() + "\n";
                         for (int i = 0; i < 6; i++) {
-                            if (i != 5) { formattedPlayer += "- " + build[i] + "\n"; }
+                            if (i != 5) {
+                                formattedPlayer += "- " + build[i] + "\n";
+                            }
                         }
                         if (relicsEnabled) {
                             String[] relics = playerData.getRelicsAsStringArray();
                             formattedPlayer += "\n\nRelics: ";
                             for (int i = 0; i < 2; i++) {
                                 formattedPlayer += relics[i];
-                                if (i != 1) { formattedPlayer += "\n"; }
+                                if (i != 1) {
+                                    formattedPlayer += "\n";
+                                }
                             }
                         }
                         sendIntent.putExtra(Intent.EXTRA_TEXT, formattedPlayer);
@@ -68,7 +72,7 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                         buildActivity.setTextViews();
                         break;
                     case 2:
-                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                         LayoutInflater li = LayoutInflater.from(context);
                         View saveView = li.inflate(R.layout.save_build_dialog, null);
                         alertDialogBuilder.setView(saveView);
@@ -77,7 +81,7 @@ public class LoadoutLongClickListener implements View.OnLongClickListener {
                         if (MainActivity.buildDatabase.dao().loadAll().size() == 0) {
                             assignedId = 0;
                         } else {
-                            assignedId = MainActivity.buildDatabase.dao().getLast().getId()+1;
+                            assignedId = MainActivity.buildDatabase.dao().getLast().getId() + 1;
                         }
                         alertDialogBuilder
                                 .setCancelable(true)
