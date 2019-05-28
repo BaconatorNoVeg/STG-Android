@@ -6,8 +6,8 @@ android {
         applicationId "com.baconatornoveg.stg"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 26
-        versionName "1.8.1"
+        versionCode 27
+        versionName '1.9.0'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
