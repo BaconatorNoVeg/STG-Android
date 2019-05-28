@@ -8,17 +8,14 @@
         android:title="@string/view_saved_players"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_donate"
-        android:icon="@drawable/ic_buymeacoffee"
-        android:title="@string/donate"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/action_options"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/settings"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_roadmap"
-        android:title="@string/roadmap" />
+        android:id="@+id/action_appinfo"
+        android:icon="@drawable/ic_info"
+        android:title="@string/appinfo"
+        app:showAsAction="ifRoom" />
 
 </menu>

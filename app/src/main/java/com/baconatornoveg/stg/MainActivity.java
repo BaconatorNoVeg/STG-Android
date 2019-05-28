@@ -128,10 +128,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_donate:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://buymeacoff.ee/baconatornoveg"));
-                startActivity(browserIntent);
-                return true;
 
             case R.id.action_options:
                 Intent optionsIntent = new Intent(getApplicationContext(), OptionsActivity.class);
@@ -143,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(savedIntent);
                 return true;
 
-            case R.id.action_roadmap:
-                Intent roadmapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://trello.com/b/jWwfWeOs/smite-team-generator"));
-                startActivity(roadmapIntent);
+            case R.id.action_appinfo:
+                Intent appInfoIntent = new Intent(getApplicationContext(), AppInfoActivity.class);
+                startActivity(appInfoIntent);
                 return true;
 
             default:
