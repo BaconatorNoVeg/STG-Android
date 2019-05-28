@@ -1,5 +1,7 @@
 # Smite Team Generator (Android Front-end)
-![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.3.0-green.svg) ![](https://img.shields.io/badge/Beta-1.8.0-blue.svg)
+![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-WIP-green.svg) ![](https://img.shields.io/badge/Release-1.8.1-green.svg) ![](https://img.shields.io/badge/Beta-1.9.0-blue.svg)
+
+<a href="https://www.buymeacoffee.com/baconatornoveg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 Starting with version 0.4.0, this will require [STG-Lib](https://github.com/BaconatorNoVeg/STG-Lib).
 
@@ -15,6 +17,7 @@ Smite Team Generator is written completely in Java for the Android platform. It 
 - Choose how builds are generated through settings
 - Share individual players or the whole team to a messaging app of your choice
 - Reroll individual players or the whole team
+- Save builds to view again another time
 - More features coming soon
 
 Google Play Testing Link: https://play.google.com/apps/testing/com.baconatornoveg.stg
