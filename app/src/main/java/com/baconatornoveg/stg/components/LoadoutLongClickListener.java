@@ -1,11 +1,9 @@
 package com.baconatornoveg.stg.components;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -15,13 +13,8 @@ import com.baconatornoveg.stg.BuildActivity;
 import com.baconatornoveg.stg.MainActivity;
 import com.baconatornoveg.stg.R;
 import com.baconatornoveg.stg.database.DBPlayer;
-import com.baconatornoveg.stglib.Item;
 import com.baconatornoveg.stglib.Player;
 import com.baconatornoveg.stglib.Team;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class LoadoutLongClickListener implements View.OnLongClickListener {
 

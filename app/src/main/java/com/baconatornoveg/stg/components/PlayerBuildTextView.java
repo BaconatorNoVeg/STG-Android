@@ -1,7 +1,6 @@
 package com.baconatornoveg.stg.components;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
 

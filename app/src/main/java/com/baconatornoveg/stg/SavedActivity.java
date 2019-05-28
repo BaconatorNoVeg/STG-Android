@@ -3,19 +3,13 @@ package com.baconatornoveg.stg;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.baconatornoveg.stg.components.PlayerTextView;
 import com.baconatornoveg.stg.components.SavedBuildLayout;
-import com.baconatornoveg.stg.components.SavedBuildTextView;
 import com.baconatornoveg.stg.database.DBPlayer;
 import com.baconatornoveg.stg.database.DatabaseAccessObject;
-
-import org.apache.commons.math3.geometry.euclidean.twod.Line;
 
 import java.util.List;
 
