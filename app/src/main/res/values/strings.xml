@@ -6,7 +6,7 @@
     <string name="three_player">Joust</string>
     <string name="four_player">Siege</string>
     <string name="five_player">Full</string>
-    <string name="donate">Donate</string>
+    <string name="donate">Buy Me a Coffee</string>
     <string name="reroll">Reroll</string>
     <string name="share">Share Team</string>
     <string name="settings">Settings</string>
@@ -14,6 +14,7 @@
     <string name="delete_this_build">Delete this Build</string>
     <string name="delete_build_confirmation">Do you want to delete this build?</string>
     <string name="no_saved">You don\'t have any saved builds</string>
+    <string name="roadmap">Road Map</string>
     <string-array name="buildtypes">
         <item>Default Random</item>
         <item>Full Offensive</item>

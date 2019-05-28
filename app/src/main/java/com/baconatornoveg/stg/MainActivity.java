@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_donate:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://paypal.me/joshualuce"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://buymeacoff.ee/baconatornoveg"));
                 startActivity(browserIntent);
                 return true;
 
@@ -141,6 +141,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_view_saved:
                 Intent savedIntent = new Intent(getApplicationContext(), SavedActivity.class);
                 startActivity(savedIntent);
+                return true;
+
+            case R.id.action_roadmap:
+                Intent roadmapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://trello.com/b/jWwfWeOs/smite-team-generator"));
+                startActivity(roadmapIntent);
                 return true;
 
             default:
