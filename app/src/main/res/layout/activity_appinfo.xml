@@ -6,92 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".AppInfoActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toStartOf="@+id/progressBar"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:contentDescription="@string/app_logo" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:padding="50dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/appTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="35dp"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/progressBar" />
+        app:layout_constraintTop_toBottomOf="@id/appTitle"
+        app:layout_constraintBottom_toTopOf="@+id/appSubtitle"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/app_logo" />
 
     <TextView
         android:id="@+id/appSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="App Version: X.X.X\nSTG-Lib Version: X.X.X\nProudly coded by Joshua Luce"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer" />
 
-    <Button
-        android:id="@+id/supportButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="96dp"
-        android:backgroundTint="#FD803F"
-        android:drawableStart="@drawable/ic_buymeacoffee"
-        android:text="@string/donate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/roadmapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="96dp"
-        android:backgroundTint="#0078BD"
-        android:drawableStart="@drawable/ic_trello"
-        android:drawablePadding="5dp"
-        android:text="@string/roadmap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/supportButton"
+            android:layout_marginStart="75sp"
+            android:layout_marginEnd="75sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FD803F"
+            android:drawableStart="@drawable/ic_buymeacoffee"
+            android:text="@string/donate" />
 
-    <Button
-        android:id="@+id/issueButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#F3F3F3"
-        android:drawableStart="@drawable/ic_github"
-        android:drawablePadding="5dp"
-        android:text="@string/report_issue"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/supportButton" />
+        <Button
+            android:id="@+id/roadmapButton"
+            android:layout_marginStart="75sp"
+            android:layout_marginEnd="75sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0078BD"
+            android:drawableStart="@drawable/ic_trello"
+            android:drawablePadding="5dp"
+            android:text="@string/roadmap" />
+
+        <Button
+            android:id="@+id/issueButton"
+            android:layout_marginStart="75sp"
+            android:layout_marginEnd="75sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F3F3F3"
+            android:drawableStart="@drawable/ic_github"
+            android:drawablePadding="5dp"
+            android:text="@string/report_issue"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
