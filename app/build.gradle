@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.baconatornoveg.stg"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 27
-        versionName '1.9.0'
+        targetSdkVersion 29
+        versionCode 30
+        versionName '1.9.5'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -25,13 +25,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.guava:guava:25.0-android'
-    implementation 'com.github.BaconatorNoVeg:STG-Lib:RC1.5.13'
+    implementation 'com.github.BaconatorNoVeg:STG-Lib:RC1.5.21'
 
-    def room_version = "2.1.0-alpha07"
+    def room_version = "2.1.0"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
