@@ -28,4 +28,4 @@ Google Play Store Link: https://play.google.com/store/apps/details?id=com.bacona
 ## Using the Source Files
 Just import the build.gradle file from your downloaded source code into Android Studio, and you'll be good to go from there.
 
-If you have any questions, or you would like to contribute to this project somehow, please do not hesitate to use the issue tracker or contact me on Discord: **Baconator_NoVeg#8550**.
+If you have any questions, or you would like to contribute to this project somehow, please do not hesitate to use the issue tracker to let me know.
