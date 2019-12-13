@@ -44,7 +44,7 @@ public class AppInfoActivity extends AppCompatActivity {
         supportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/baconatornoveg"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/codazed"));
                 startActivity(browserIntent);
             }
         });
