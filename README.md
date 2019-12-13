@@ -1,5 +1,5 @@
 # Smite Team Generator (Android Front-end)
-![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-Feature_Complete-4e0ab5.svg) ![](https://img.shields.io/badge/Release-1.9.5-green.svg) ![](https://img.shields.io/badge/Beta-1.9.0-blue.svg)
+![](https://img.shields.io/badge/Language-Java-brightgreen.svg) ![](https://img.shields.io/badge/API-Android-blue.svg) ![](https://img.shields.io/badge/Status-Feature_Complete-4e0ab5.svg) ![](https://img.shields.io/badge/Release-1.10.5-green.svg) ![](https://img.shields.io/badge/Beta-1.10.10-blue.svg)
 
 <a href="https://www.buymeacoffee.com/baconatornoveg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
