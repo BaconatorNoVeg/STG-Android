@@ -6,8 +6,8 @@ android {
         applicationId "com.baconatornoveg.stg"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 31
-        versionName '1.10.5'
+        versionCode 32
+        versionName '1.10.10'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -29,7 +29,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.guava:guava:25.0-android'
-    implementation 'com.github.BaconatorNoVeg:STG-Lib:RC1.6.0'
+    implementation 'com.gitlab.Codazed:STG-Lib:RC1.7.0'
 
     def room_version = "2.1.0"
 
