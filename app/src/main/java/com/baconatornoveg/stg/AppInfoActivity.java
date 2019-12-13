@@ -21,7 +21,6 @@ public class AppInfoActivity extends AppCompatActivity {
 
     public static SmiteTeamGenerator stg = new SmiteTeamGenerator();
     public Context context;
-    public Intent mainIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
