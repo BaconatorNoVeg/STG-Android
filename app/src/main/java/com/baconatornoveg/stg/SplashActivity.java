@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,10 @@ public class SplashActivity extends AppCompatActivity {
         String subtitleString = "App Version: " + appVersion + "\nSTG-Lib Version: " + stgLibVersion + "\nProudly coded by Joshua Luce.";
         appSubtitle.setText(subtitleString);
         mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        ImageView appLogo1 = findViewById(R.id.applogo_1);
+        ImageView appLogo2 = findViewById(R.id.applogo_2);
+        appLogo1.startAnimation(AnimationUtils.loadAnimation(context, R.anim.clockwise_rot));
+        appLogo2.startAnimation(AnimationUtils.loadAnimation(context, R.anim.counterclockwise_rot));
         new GetGeneratorLists().execute();
     }
 
