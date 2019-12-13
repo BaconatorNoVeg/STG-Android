@@ -58,7 +58,7 @@ public class AppInfoActivity extends AppCompatActivity {
         issueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent githubIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/BaconatorNoVeg/SmiteTeamGenerator/issues"));
+                Intent githubIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/Codazed/SmiteTeamGenerator/issues"));
                 startActivity(githubIntent);
             }
         });
