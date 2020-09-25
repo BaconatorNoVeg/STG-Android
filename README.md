@@ -3,9 +3,11 @@
 
 <a href="https://www.buymeacoffee.com/baconatornoveg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
+Be sure to check out the web version of this app! [https://smitebuilder.app](https://smitebuilder.app)
+
 As of June 25, 2019, this project is marked as "Feature Complete." This means all planned features of the app are now finished. I will continue to support this app with updates that fix bugs and issues that exist or come up. Currently, there are no other planned features for the app, but if that ever changes, the project status will change back to "WIP."
 
-Starting with version 0.4.0, this will require [STG-Lib](https://github.com/BaconatorNoVeg/STG-Lib).
+Starting with version 0.4.0, this will require [STG-Lib](https://gitlab.com/Codazed/STG-Lib).
 
 Do you play Smite? Do you get bored playing the same god over and over again? Do you ever find it difficult to choose a new god
 to play? Do you want to have a lot more fun when playing in parties? If you answered 'yes' to any of these questions, this is
