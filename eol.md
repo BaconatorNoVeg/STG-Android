@@ -4,7 +4,7 @@
 
 
 
-TLDR: This app is deprecated. The new version is over [here](https://smitebuilder.app).
+**TLDR: This app is deprecated. The new version is over [here](https://smitebuilder.app).**
 
 
 
